@@ -2,6 +2,8 @@ import React from "react";
 import "./login.css";
 import Logo from "../../assets/logo.png";
 import ImageLogin from "../../assets/login.png";
+import { HiOutlineMail } from "react-icons/hi";
+import { BsKey } from "react-icons/bs";
 
 const Login = () => {
   return (
@@ -17,9 +19,11 @@ const Login = () => {
             <form>
               <div className="form-group">
                 <input type="email" placeholder="E-mail" />
+                <HiOutlineMail className="icon" />
               </div>
               <div className="form-group">
                 <input type="password" placeholder="Password" />
+                <BsKey className="icon" />
               </div>
               <div className="form-group">
                 <button>Login</button>
