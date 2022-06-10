@@ -1,11 +1,32 @@
-import React from "react";
+import React, { useState } from "react";
 import "./login.css";
 import Logo from "../../assets/logo.png";
 import ImageLogin from "../../assets/login.png";
 import { HiOutlineMail } from "react-icons/hi";
 import { BsKey } from "react-icons/bs";
+import { useEffect } from "react";
 
 const Login = () => {
+  const [data, setData] = useState({
+    email: null,
+    password: null,
+  });
+
+  const handleChange = (e) => {
+    const value = e.target.value;
+    setData({ ...data, [e.target.name]: value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const user = {
+      email: data.email,
+      password: data.password,
+    };
+    console.log(user);
+    setData({ ...data, [e.target.name]: null });
+  };
+
   return (
     <div className="login">
       <div className="wrapper">
@@ -16,13 +37,23 @@ const Login = () => {
           </div>
           <div className="form">
             <h2>Login</h2>
-            <form>
+            <form onSubmit={handleSubmit}>
               <div className="form-group">
-                <input type="email" placeholder="E-mail" />
+                <input
+                  type="email"
+                  placeholder="E-mail"
+                  name="email"
+                  onChange={handleChange}
+                />
                 <HiOutlineMail className="icon" />
               </div>
               <div className="form-group">
-                <input type="password" placeholder="Password" />
+                <input
+                  type="password"
+                  placeholder="Password"
+                  name="password"
+                  onChange={handleChange}
+                />
                 <BsKey className="icon" />
               </div>
               <div className="form-group">
