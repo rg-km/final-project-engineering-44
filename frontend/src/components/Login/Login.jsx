@@ -4,7 +4,6 @@ import Logo from "../../assets/logo.png";
 import ImageLogin from "../../assets/login.png";
 import { HiOutlineMail } from "react-icons/hi";
 import { BsKey } from "react-icons/bs";
-import { useEffect } from "react";
 
 const Login = () => {
   const [data, setData] = useState({
