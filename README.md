@@ -11,7 +11,7 @@ git clone https://github.com/rg-km/final-project-engineering-44.git
 Push
 
 ```
-git push origin backend
+git push -u origin main
 ```
 
 # IMPORTANT
