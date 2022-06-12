@@ -5,6 +5,7 @@ import Logo from "../../assets/logo.png";
 import { HiOutlineMail } from "react-icons/hi";
 import { BsKey } from "react-icons/bs";
 import { AiOutlineUser } from "react-icons/ai";
+import { Link } from "react-router-dom";
 
 const Register = () => {
   const [page, setPage] = useState(0);
@@ -119,8 +120,18 @@ const Register = () => {
       <div className="wrapper">
         <div className="left">
           <div className="logo">
-            <img src={Logo} alt="" />
-            <h3>Ruang Beasiswa</h3>
+            <Link
+              to="/"
+              style={{
+                textDecoration: "none",
+                color: "inherit",
+                display: "flex",
+                alignItems: "center",
+                gap: "10px",
+              }}>
+              <img src={Logo} alt="" />
+              <h3>Ruang Beasiswa</h3>
+            </Link>
           </div>
           <div className="form">
             <h2>{title[page]}</h2>

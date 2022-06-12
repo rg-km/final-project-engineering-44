@@ -1,46 +1,3 @@
-:root {
-    --primary-color: #1F4690;
-}
-
-.login {
-    width: 100%;
-    height: 100vh;
-}
-
-.login .wrapper {
-    margin: 3em auto;
-    display: flex;
-    width: 80%;
-    height: 600px;
-    border: 1px solid;
-    border-radius: 20px;
-}
-
-.login .left,
-.login .right {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
-}
-
-.login .left {
-    position: relative;
-}
-
-.login .left .logo {
-    position: absolute;
-    top: 20px;
-    left: 50px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-
 .login .form {
     width: 400px;
     height: 400px;
@@ -99,15 +56,4 @@
 
 .login .form span a {
     color: var(--primary-color);
-}
-
-.login .right {
-    background: var(--primary-color);
-    border-radius: 20px;
-}
-
-.login .right img {
-    width: 350px;
-    height: 250px;
-    object-fit: contain;
 }
