@@ -3,7 +3,7 @@ import "./login.css";
 import Logo from "../../assets/logo.png";
 import ImageLogin from "../../assets/login.png";
 import { Link } from "react-router-dom";
-import Form from "../../components/Form/Form";
+import { LoginForm } from "../../components/Form/Form";
 
 const Login = () => {
   const [data, setData] = useState({
@@ -44,7 +44,7 @@ const Login = () => {
               <h3>Ruang Beasiswa</h3>
             </Link>
           </div>
-          <Form handleChange={handleChange} handleSubmit={handleSubmit} />
+          <LoginForm handleChange={handleChange} handleSubmit={handleSubmit} />
         </div>
         <div className="right">
           <img src={ImageLogin} alt="" />
