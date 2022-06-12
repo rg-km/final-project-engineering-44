@@ -8,9 +8,9 @@ const Pages = () => {
   return (
     <div>
       <Routes>
+        <Route path="/" index element={<LandingPage />} />
         <Route path="/auth/login" element={<Login />} />
         <Route path="/auth/register" element={<Register />} />
-        <Route path="/landingpage" element={<LandingPage />} />
       </Routes>
     </div>
   );
