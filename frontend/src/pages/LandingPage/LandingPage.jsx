@@ -53,14 +53,18 @@ const LandingPage = () => {
           </div>
         </div>
       </div>
+      {/* fit, biar ga penuh kamu coding disini, list nya pisahin di component aja biar bisa di import */}
       <div className="list-konten">
         <div>
           <h1>List Beasiswa</h1>
+          {/* ini list beasiswa buat folder baru aja di component namanya list nanti import disini datanya sementara pake dummy dlu aja nanti di buatin store zustand nya */}
         </div>
         <div>
           <h1>Top News</h1>
+          {/* sama list ini juga buat di component */}
         </div>
         <div className="kategori-beasiswa">
+          {/* ini juga, kalo ga buat dlu aja nanti aku yang ubah */}
           <h1>Top Category</h1>
           <div className="pilihan-beasiswa">
             <div>
