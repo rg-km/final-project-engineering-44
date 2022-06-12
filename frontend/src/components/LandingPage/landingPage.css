@@ -1,0 +1,111 @@
+.img {
+    height: 90vh;
+    width: 90vh;
+}
+
+.landing {
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.wrapper-up {
+    display: flex;
+    flex-direction: row;
+    /* align-items: center; */
+    /* justify-content: center; */
+    gap: 90px;
+}
+
+.wrapper-up-right {
+    display: flex;
+    flex-direction: column;
+    margin-top: 40px;
+}
+
+.button {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+    justify-content: right;
+}
+.button-SigIn {
+    border: 1px solid #1F4690 ;
+    border-radius: 8px;
+    padding: 8px;
+    color: #1f4690;
+    background-color: white;
+}
+
+.button-SigOut {
+    border: 0px;
+    border-radius: 8px;
+    padding: 8px;
+    color: white;
+    background-color: #1f4690;
+}
+
+.judul {
+    font-size: 70px;
+    margin-bottom: -5px;
+    padding-right: 50px;
+}
+
+.tagline {
+    font-size: 25px;
+    color: #1f4690;
+}
+
+.form-input {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+}
+
+.input {
+    border: 0px;
+    border-radius: 5px;
+    background-color: #e4e3e3;
+    padding: 10px;
+    width: 450px; 
+}
+
+.button-search {
+    border: 0px;
+    border-radius: 5px;
+    background-color: #1f4690;
+    padding: 10px;
+    width: 60px;
+}
+
+.icon {
+    color: white;
+    size: 30px;
+}
+
+.tag-line-bottom {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: right;
+    margin-right: 55px;
+}
+
+.list-konten {
+    margin-left: 40px;
+}
+
+.kategori-beasiswa {
+    display: flex;
+    flex-direction: column;
+}
+
+.pilihan-beasiswa {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    color: #1f4690;
+    margin-top: -20px;
+}
+
