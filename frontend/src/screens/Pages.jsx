@@ -10,7 +10,7 @@ const Pages = () => {
       <Routes>
         <Route path="/auth/login" element={<Login />} />
         <Route path="/auth/register" element={<Register />} />
-        <Route path="/auth/landingpage" element={<LandingPage />} />
+        <Route path="/landingpage" element={<LandingPage />} />
       </Routes>
     </div>
   );
