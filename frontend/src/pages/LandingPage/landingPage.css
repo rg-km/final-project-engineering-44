@@ -110,10 +110,47 @@
     flex-direction: column;
 }
 
-.pilihan-beasiswa {
+/* .wrapper-powered {
     display: flex;
     flex-direction: row;
-    gap: 20px;
-    color: #1f4690;
-    margin-top: -20px;
+    gap: 170px;
+    margin-top: 60px;
+    align-items: center;
+    justify-content:center;
+} */
+
+.powered {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 80px;
+    /* justify-content: center; */
+}
+
+#logo-powered {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    
+}
+
+.img-logo-lpdp {
+    height: 4em;
+    width: 8em;
+}
+
+.img-logo-djarum {
+    height: 4em;
+    width: 10em;
+}
+
+.img-logo-rg {
+    height: 4em;
+    width: 5em;
+}
+
+.logo-bawah {
+    display: flex;
+    flex-direction: row;
+    gap: 800px;
 }

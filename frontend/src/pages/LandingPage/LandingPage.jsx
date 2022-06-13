@@ -1,9 +1,16 @@
 // import React, { useState } from "react";
 import ImageLandingPage from "../../assets/logoLanding.png";
+import LogoLeft from "../../assets/logo-landing-left.png";
+import LogoRight from "../../assets/logo-landing-right.png";
+import LogoLPDP from "../../assets/logo-lpdp.png";
+import LogoDjarum from "../../assets/logo-djarum-beasiswa.png";
+import LogoRG from "../../assets/logo-ruang-guru.png";
 import { BsSearch } from "react-icons/bs";
 import { BsPerson } from "react-icons/bs";
 import "./landingPage.css";
 import { Link } from "react-router-dom";
+import TopCategory from "../../components/List/Top-Category";
+import Footer from "../../components/Footer/Footer";
 
 const LandingPage = () => {
   return (
@@ -65,47 +72,25 @@ const LandingPage = () => {
         </div>
         <div className="kategori-beasiswa">
           {/* ini juga, kalo ga buat dlu aja nanti aku yang ubah */}
+
+          {/* gini kah maksudnya dap, eh iya itu yg footer nanti lagi kulanjutnya */}
           <h1>Top Category</h1>
-          <div className="pilihan-beasiswa">
-            <div>
-              <p>
-                <a href="/">Beasiswa Diploma</a>
-              </p>
-              <p>
-                <a href="/">Beasiswa Sarjana</a>
-              </p>
-              <p>
-                <a href="/">Beasiswa Master</a>
-              </p>
-              <p>
-                <a href="/">Beasiswa Doktor</a>
-              </p>
-            </div>
-            <div>
-              <p>
-                <a href="/">Beasiswa Pelajar SD</a>
-              </p>
-              <p>
-                <a href="/">Beasiswa Pelajar SMP</a>
-              </p>
-              <p>
-                <a href="/">Beasiswa Pelajar SMA</a>
-              </p>
-            </div>
-            <div>
-              <p>
-                <a href="/">Beasiswa Dalam Negeri</a>
-              </p>
-              <p>
-                <a href="/">Beasiswa Luar Negeri</a>
-              </p>
-              <p>
-                <a href="/">More</a>
-              </p>
-            </div>
-          </div>
+          <TopCategory />
         </div>
       </div>
+      <div className="powered">
+        <h4>Powered by</h4>
+        <div id="logo-powered">
+          <img src={LogoLPDP} alt="" className="img-logo-lpdp"/>
+          <img src={LogoDjarum} alt="" className="img-logo-djarum"/>
+          <img src={LogoRG} alt="" className="img-logo-rg"/>
+        </div>
+      </div>
+      <div className="logo-bawah">
+        <img src={LogoLeft} alt="" className="img-left"/>
+        <img src={LogoRight} alt="" className="img-right"/>
+      </div>
+      <Footer />
     </div>
   );
 };
