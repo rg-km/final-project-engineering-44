@@ -71,9 +71,8 @@ const LandingPage = () => {
           {/* sama list ini juga buat di component */}
         </div>
         <div className="kategori-beasiswa">
-          {/* ini juga, kalo ga buat dlu aja nanti aku yang ubah */}
-
           {/* gini kah maksudnya dap, eh iya itu yg footer nanti lagi kulanjutnya */}
+          {/* oke mantap fit */}
           <h1>Top Category</h1>
           <TopCategory />
         </div>
@@ -81,14 +80,14 @@ const LandingPage = () => {
       <div className="powered">
         <h4>Powered by</h4>
         <div id="logo-powered">
-          <img src={LogoLPDP} alt="" className="img-logo-lpdp"/>
-          <img src={LogoDjarum} alt="" className="img-logo-djarum"/>
-          <img src={LogoRG} alt="" className="img-logo-rg"/>
+          <img src={LogoLPDP} alt="" className="img-logo-lpdp" />
+          <img src={LogoDjarum} alt="" className="img-logo-djarum" />
+          <img src={LogoRG} alt="" className="img-logo-rg" />
         </div>
       </div>
       <div className="logo-bawah">
-        <img src={LogoLeft} alt="" className="img-left"/>
-        <img src={LogoRight} alt="" className="img-right"/>
+        <img src={LogoLeft} alt="" className="img-left" />
+        <img src={LogoRight} alt="" className="img-right" />
       </div>
       <Footer />
     </div>
