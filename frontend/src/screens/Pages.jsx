@@ -1,8 +1,8 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import Login from "../components/Login/Login";
-import Register from "../components/Register/Register";
-import LandingPage from "../components/LandingPage/LandingPage";
+import Login from "../pages/Login/Login";
+import Register from "../pages/Register/Register";
+import LandingPage from "../pages/LandingPage/LandingPage";
 
 const Pages = () => {
   return (
