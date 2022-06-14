@@ -15,7 +15,25 @@ import ListBeasiswa from "../../components/List/List-Beasiswa";
 import { useState } from "react";
 
 const LandingPage = () => {
-  const [user, setUser] = useState(false);
+  const [user, setUser] = useState({
+    name: "",
+    image: "",
+    isUser: false,
+  });
+
+  const handleSignIn = () => {
+    setUser({
+      name: "John",
+      image: "https://i.pravatar.cc/",
+      isUser: true,
+    });
+  };
+
+  const handleSignOut = () => {
+    setUser({
+      isUser: false,
+    });
+  };
 
   return (
     <div className="landing">
@@ -25,15 +43,28 @@ const LandingPage = () => {
         </div>
         <div className="wrapper-up-right">
           <div className="button">
-            {user ? (
-              <Link to="/" className="link">
-                <button className="button-SignOut">Sign Out</button>
-              </Link>
+            {user.isUser ? (
+              <>
+                <div className="profile">
+                  <h3>Hi, {user.name}</h3>
+                  <img src={user.image} alt="profile user" />
+                </div>
+                <Link to="/" className="link">
+                  <button className="button-SignOut" onClick={handleSignOut}>
+                    Sign Out
+                  </button>
+                </Link>
+              </>
             ) : (
               <>
-                <Link to="/auth/login" className="link">
-                  <button className="button-SignIn">Sign In</button>
-                </Link>
+                <button className="button-SignIn" onClick={handleSignIn}>
+                  Sign In
+                </button>
+                {/* <Link to="/auth/login" className="link">
+                  <button className="button-SignIn" onClick={handleSignIn}>
+                    Sign In
+                  </button>
+                </Link> */}
                 <Link to="/auth/register" className="link">
                   <button className="button-SignUp">Sign Up</button>
                 </Link>
