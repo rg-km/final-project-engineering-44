@@ -12,14 +12,21 @@ const Register = () => {
     password: "",
     jenjang: "",
     domisili: "",
+    error: false,
   });
 
   const handleChange = (e) => {
     const value = e.target.value;
-    setData({
-      ...data,
-      [e.target.name]: value,
-    });
+    if (e.target.name === "") {
+      setData({
+        error: true,
+      });
+    } else {
+      setData({
+        ...data,
+        [e.target.name]: value,
+      });
+    }
   };
 
   const handleSubmit = (e) => {

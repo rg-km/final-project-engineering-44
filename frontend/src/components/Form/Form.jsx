@@ -15,6 +15,7 @@ const LoginForm = ({ handleChange, handleSubmit }) => {
             placeholder="E-mail"
             name="email"
             onChange={handleChange}
+            required
           />
           <HiOutlineMail className="icon" />
         </div>
@@ -24,6 +25,7 @@ const LoginForm = ({ handleChange, handleSubmit }) => {
             placeholder="Password"
             name="password"
             onChange={handleChange}
+            required
           />
           <BsKey className="icon" />
         </div>
@@ -51,9 +53,11 @@ const RegisterForm = ({ handleChange, handleSubmit, data }) => {
             name="email"
             onChange={handleChange}
             value={data.email}
+            required
           />
           <HiOutlineMail className="icon" />
         </div>
+
         <div className="form-group">
           <input
             type="text"
@@ -61,9 +65,11 @@ const RegisterForm = ({ handleChange, handleSubmit, data }) => {
             name="username"
             onChange={handleChange}
             value={data.username}
+            required
           />
           <AiOutlineUser className="icon" />
         </div>
+
         <div className="form-group">
           <input
             type="password"
@@ -71,6 +77,7 @@ const RegisterForm = ({ handleChange, handleSubmit, data }) => {
             name="password"
             onChange={handleChange}
             value={data.password}
+            required
           />
           <BsKey className="icon" />
         </div>
@@ -88,9 +95,11 @@ const RegisterForm = ({ handleChange, handleSubmit, data }) => {
             name="jenjang"
             onChange={handleChange}
             value={data.jenjang}
+            required
           />
           <HiOutlineMail className="icon" />
         </div>
+
         <div className="form-group">
           <input
             type="text"
@@ -98,14 +107,18 @@ const RegisterForm = ({ handleChange, handleSubmit, data }) => {
             name="domisili"
             onChange={handleChange}
             value={data.domisili}
+            required
           />
           <AiOutlineUser className="icon" />
         </div>
+
         <div className="button">
           <div className="form-group">
             <button
               onClick={() => {
-                setPage((currPage) => currPage - 1);
+                if (!data.error) {
+                  setPage((currPage) => currPage - 1);
+                }
               }}>
               Prev
             </button>
@@ -125,7 +138,9 @@ const RegisterForm = ({ handleChange, handleSubmit, data }) => {
         <div className="form-group">
           <button
             disabled={page === 1}
-            onClick={() => setPage((currPage) => currPage + 1)}>
+            onClick={() => {
+              setPage((currPage) => currPage + 1);
+            }}>
             Next
           </button>
         </div>

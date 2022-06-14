@@ -11,9 +11,12 @@ import "./landingPage.css";
 import { Link } from "react-router-dom";
 import TopCategory from "../../components/List/Top-Category";
 import Footer from "../../components/Footer/Footer";
-import ListBeasiswa from "../../components/List/List-Beasiswa"
+import ListBeasiswa from "../../components/List/List-Beasiswa";
+import { useState } from "react";
 
 const LandingPage = () => {
+  const [user, setUser] = useState(false);
+
   return (
     <div className="landing">
       <div className="wrapper-up">
@@ -22,12 +25,20 @@ const LandingPage = () => {
         </div>
         <div className="wrapper-up-right">
           <div className="button">
-            <Link to="/auth/login" className="link">
-              <button className="button-SigIn">Sign In</button>
-            </Link>
-            <Link to="/" className="link">
-              <button className="button-SigOut">Sign Out</button>
-            </Link>
+            {user ? (
+              <Link to="/" className="link">
+                <button className="button-SignOut">Sign Out</button>
+              </Link>
+            ) : (
+              <>
+                <Link to="/auth/login" className="link">
+                  <button className="button-SignIn">Sign In</button>
+                </Link>
+                <Link to="/auth/register" className="link">
+                  <button className="button-SignUp">Sign Up</button>
+                </Link>
+              </>
+            )}
           </div>
           <div className="hero">
             <h1 className="judul">Ruang Beasiswa</h1>

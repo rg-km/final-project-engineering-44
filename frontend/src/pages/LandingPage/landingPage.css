@@ -31,7 +31,7 @@
     justify-content: right;
 }
 
-.button-SigIn {
+.button-SignIn {
     border: 1px solid #1F4690;
     border-radius: 8px;
     padding: 8px;
@@ -41,7 +41,17 @@
     font-weight: bold;
 }
 
-.button-SigOut {
+.button-SignOut {
+    border: none;
+    border-radius: 8px;
+    padding: 8px;
+    color: white;
+    background-color: #1f4690;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.button-SignUp {
     border: none;
     border-radius: 8px;
     padding: 8px;
@@ -125,13 +135,18 @@
     align-items: center;
     margin-top: 80px;
     /* justify-content: center; */
+    width: 100%;
 }
 
 #logo-powered {
     display: flex;
     flex-direction: row;
     gap: 30px;
-    
+
+}
+
+#logo-powered img {
+    object-fit: contain;
 }
 
 .img-logo-lpdp {
@@ -151,6 +166,7 @@
 
 .logo-bawah {
     display: flex;
-    flex-direction: row;
-    gap: 793px;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
 }
