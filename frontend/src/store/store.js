@@ -1,3 +1,3 @@
 import create from "zustand";
 
-const store = create({});
+const useStore = create({});
