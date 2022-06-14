@@ -11,6 +11,7 @@ import "./landingPage.css";
 import { Link } from "react-router-dom";
 import TopCategory from "../../components/List/Top-Category";
 import Footer from "../../components/Footer/Footer";
+import ListBeasiswa from "../../components/List/List-Beasiswa"
 
 const LandingPage = () => {
   return (
@@ -64,6 +65,7 @@ const LandingPage = () => {
       <div className="list-konten">
         <div>
           <h1>List Beasiswa</h1>
+          <ListBeasiswa />
           {/* ini list beasiswa buat folder baru aja di component namanya list nanti import disini datanya sementara pake dummy dlu aja nanti di buatin store zustand nya */}
         </div>
         <div>

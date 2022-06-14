@@ -1,0 +1,26 @@
+.list-beasiswa {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+}
+
+.button-list-beasiswa {
+    display: flex;
+    flex-direction: column;
+    background-color: #1f4690;
+    color: white;
+    border: 0px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.beasiswa-ppg {
+    width: 200px;
+    border-radius: 10px;
+    padding: 5px;
+    
+}
