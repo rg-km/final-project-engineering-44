@@ -27,7 +27,6 @@ func NewAPI(userRepo repo.UserRepository) *API {
 	// {
 	// 	user.POST("/login", api.LoginUser)
 	// }
-	//Tes
 	gin.POST("/api/login", api.login)
 	gin.POST("/api/register", api.Register)
 
