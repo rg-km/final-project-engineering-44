@@ -4,6 +4,7 @@ import Logo from "../../assets/logo.png";
 import ImageLogin from "../../assets/login.png";
 import { Link } from "react-router-dom";
 import { LoginForm } from "../../components/Form/Form";
+import axios from "axios";
 
 const Login = () => {
   const [data, setData] = useState({
@@ -16,14 +17,13 @@ const Login = () => {
     setData({ ...data, [e.target.name]: value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const user = {
       email: data.email,
       password: data.password,
     };
-    console.log(user);
-    setData({ ...data, [e.target.name]: null });
+    await axios.post("http://localhost:8080/api/login", user);
   };
 
   return (

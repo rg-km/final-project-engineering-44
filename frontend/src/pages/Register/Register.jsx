@@ -4,6 +4,7 @@ import ImageRegister from "../../assets/register.png";
 import Logo from "../../assets/logo.png";
 import { Link } from "react-router-dom";
 import { RegisterForm } from "../../components/Form/Form";
+import axios from "axios";
 
 const Register = () => {
   const [data, setData] = useState({
@@ -12,7 +13,7 @@ const Register = () => {
     password: "",
     jenjang: "",
     domisili: "",
-    error: false,
+    error: true,
   });
 
   const handleChange = (e) => {
@@ -29,7 +30,7 @@ const Register = () => {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const user = {
       username: data.username,
@@ -38,7 +39,7 @@ const Register = () => {
       jenjang: data.jenjang,
       domisili: data.domisili,
     };
-    console.log(user);
+    await axios.post("http://localhost:8080/api/register", user);
   };
 
   return (
