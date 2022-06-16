@@ -1,12 +1,8 @@
-import react from 'react'
 import ListBeasiswa from "../List/List-Beasiswa";
-import 'swiper/css';
+import "swiper/css";
 
 const Slider = () => {
-    return(
-        <ListBeasiswa/>
-    );
+  return <ListBeasiswa />;
 };
 
 export default Slider;
-
