@@ -4,6 +4,7 @@ import BeasiswaBI from "../../assets/beasiswa-BI.png";
 import BeasiswaKaltim from "../../assets/beasiswa-kaltim.png";
 import BeasiswaKarawang from "../../assets/beasiswa-karawang.png";
 import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
 
 const ListBeasiswa = () => {
   const datas = [
