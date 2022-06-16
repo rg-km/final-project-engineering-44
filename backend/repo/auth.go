@@ -14,7 +14,7 @@ func NewUserRepository(db *sql.DB) *UserRepository {
 	return &UserRepository{db: db}
 }
 
-func (u *UserRepository) CheckUser(username string, password string) (*User, error) {
+func (u *UserRepository) CheckUser(username string, password string) (*UserResponse, error) {
 	sqlStatement := `SELECT * FROM user WHERE username = ? AND password = ?;`
 
 	rows, err := u.db.Query(sqlStatement, username, password)
@@ -22,9 +22,9 @@ func (u *UserRepository) CheckUser(username string, password string) (*User, err
 		return nil, err
 	}
 
-	var user User
+	var user UserResponse
 	for rows.Next() {
-		err = rows.Scan(&user.Id, &user.Username, &user.Email, &user.Password, &user.Role)
+		err = rows.Scan(&user.Id, &user.Username, &user.Email, &user.Password, &user.Jenjang, &user.Kota, &user.Role)
 		if err != nil {
 			return nil, err
 		}
@@ -42,10 +42,9 @@ func (u *UserRepository) CheckUserRegis(value string) (*User, error) {
 		return nil, err
 	}
 
-	fmt.Println("sampai")
 	var user User
 	for rows.Next() {
-		err = rows.Scan(&user.Id, &user.Username, &user.Password, &user.Email, &user.Role)
+		err = rows.Scan(&user.Id, &user.Username, &user.Password, &user.Email, &user.Jenjang, &user.Kota, &user.Role)
 		if err != nil {
 			return nil, err
 		}

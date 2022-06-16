@@ -117,7 +117,7 @@ func (api *API) Register(c *gin.Context) {
 
 	// data := *resp
 
-	records := `INSERT INTO user (username, password, email, role) VALUES (?, ?, ?, ?);`
+	records := `INSERT INTO user (username, password, email, role, jenjang, kota) VALUES (?, ?, ?, ?, ?, ?);`
 	query, err := database.DB.Prepare(records)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{
@@ -127,7 +127,7 @@ func (api *API) Register(c *gin.Context) {
 		return
 	}
 
-	_, err = query.Exec(request.Username, request.Password, request.Email, "user")
+	_, err = query.Exec(request.Username, request.Password, request.Email, "user", request.Jenjang, request.Kota)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{
 			"code":    http.StatusInternalServerError,
