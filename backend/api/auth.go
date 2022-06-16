@@ -84,6 +84,7 @@ func (api *API) login(c *gin.Context) {
 		"data":    data,
 	})
 
+
 }
 
 func (api *API) Register(c *gin.Context) {
@@ -98,7 +99,7 @@ func (api *API) Register(c *gin.Context) {
 		return
 	}
 
-	if request.Username == "" || request.Password == "" || request.Email == "" {
+	if request.Username == "" || request.Password == "" || request.Email == "" || request.Jenjang == "" || request.Domisili == ""  {
 		c.JSON(http.StatusUnauthorized, gin.H{
 			"code":    http.StatusUnauthorized,
 			"message": "username dan password tidak boleh kosong",
@@ -117,7 +118,7 @@ func (api *API) Register(c *gin.Context) {
 
 	// data := *resp
 
-	records := `INSERT INTO user (username, password, email, role) VALUES (?, ?, ?, ?);`
+	records := `INSERT INTO user (username, password, email, role, jenjang, domisili) VALUES (?, ?, ?, ?, ?, ?);`
 	query, err := database.DB.Prepare(records)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{
@@ -127,7 +128,7 @@ func (api *API) Register(c *gin.Context) {
 		return
 	}
 
-	_, err = query.Exec(request.Username, request.Password, request.Email, "user")
+	_, err = query.Exec(request.Username, request.Password, request.Jenjang, request.Domisili, request.Email, "user")
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{
 			"code":    http.StatusInternalServerError,

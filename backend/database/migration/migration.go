@@ -35,7 +35,7 @@ func main() {
 		Image VARCHAR DEFAULT 'image.jpg',
 		Category_id INTEGER NOT NULL,
 		Created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-		FOREIGN KEY (`User_id`) REFERENCES `users` (`id`)
+		FOREIGN KEY (`User_id`) REFERENCES `users` (`id`),
 		FOREIGN KEY (`Category_id`) REFERENCES `categories` (`id`)
 	  );
 	  CREATE TABLE categories (

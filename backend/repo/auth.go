@@ -45,7 +45,7 @@ func (u *UserRepository) CheckUserRegis(value string) (*User, error) {
 	fmt.Println("sampai")
 	var user User
 	for rows.Next() {
-		err = rows.Scan(&user.Id, &user.Username, &user.Password, &user.Email, &user.Role)
+		err = rows.Scan(&user.Id, &user.Username, &user.Password, &user.Email, &user.Role, &user.Jenjang, &user.Domisili)
 		if err != nil {
 			return nil, err
 		}
