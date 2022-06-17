@@ -97,7 +97,7 @@ const LandingPage = () => {
             <div className="tag-line-bottom">
               <p>
                 <BsPerson />
-                <strong>1,000</strong>user dengan tingkat keberhasilan{" "}
+                <strong>1,000</strong> user dengan tingkat keberhasilan{" "}
                 <strong>90%</strong>
               </p>
             </div>

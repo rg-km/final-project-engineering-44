@@ -51,7 +51,7 @@ const Register = () => {
               to="/"
               style={{
                 textDecoration: "none",
-                color: "inherit",
+                color: "#1f4690",
                 display: "flex",
                 alignItems: "center",
                 gap: "10px",
