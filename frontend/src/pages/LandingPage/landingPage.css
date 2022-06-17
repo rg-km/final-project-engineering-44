@@ -138,6 +138,10 @@
     flex-direction: column;
 }
 
+.kategori-beasiswa h1 {
+    margin-bottom: 30px;
+}
+
 /* .wrapper-powered {
     display: flex;
     flex-direction: row;
