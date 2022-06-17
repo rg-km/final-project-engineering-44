@@ -126,8 +126,12 @@
 }
 
 .list-konten {
-    margin-left: 40px;
+    margin: 50px 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 100px;
 }
+
 
 .kategori-beasiswa {
     display: flex;
