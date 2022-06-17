@@ -12,6 +12,9 @@ const Login = () => {
     password: null,
   });
 
+  const [isSubmit, setIsSubmit] = useState(false);
+  const [failedLogin, setFailedLogin] = useState(false);
+
   const handleChange = (e) => {
     const value = e.target.value;
     setData({ ...data, [e.target.name]: value });
@@ -23,7 +26,11 @@ const Login = () => {
       email: data.email,
       password: data.password,
     };
-    await axios.post("http://localhost:8080/api/login", user);
+    const res = await axios.post("http://localhost:5000/auth/sign-in", user);
+    console.log(res.data.code);
+    if (res.status === 200) {
+      setIsSubmit(true);
+    }
   };
 
   return (
@@ -44,6 +51,8 @@ const Login = () => {
               <h3>Ruang Beasiswa</h3>
             </Link>
           </div>
+          {isSubmit ? "Login Success" : ""}
+          {failedLogin ? "Wrong Credentials" : ""}
           <LoginForm handleChange={handleChange} handleSubmit={handleSubmit} />
         </div>
         <div className="right">
