@@ -1,14 +1,12 @@
 import React from "react";
+import Sidebar from "../../components/Sidebar/Sidebar";
+import "./dashboard.css";
 
 const Dashboard = () => {
   return (
     <div className="dashboard">
-      {/* sidebar */}
-      sidebar
-      <div className="content">
-        {/* isi disini ra */}
-        content
-      </div>
+      <Sidebar />
+      <div className="content">Dashboard</div>
     </div>
   );
 };
