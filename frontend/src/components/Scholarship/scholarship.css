@@ -1,0 +1,7 @@
+.scholarship {
+    display: flex;
+}
+
+.content {
+    flex: 4;
+}

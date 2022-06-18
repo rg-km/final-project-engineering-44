@@ -83,10 +83,12 @@
     font-size: 70px;
     margin-bottom: -5px;
     padding-right: 50px;
+    color: #1f4690;
 }
 
 .tagline {
     font-size: 25px;
+    font-weight: 500;
     color: #1f4690;
 }
 
@@ -126,12 +128,20 @@
 }
 
 .list-konten {
-    margin-left: 40px;
+    margin: 50px 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 100px;
 }
+
 
 .kategori-beasiswa {
     display: flex;
     flex-direction: column;
+}
+
+.kategori-beasiswa h1 {
+    margin-bottom: 30px;
 }
 
 /* .wrapper-powered {

@@ -3,6 +3,7 @@ package api
 import (
 	"auth/database"
 	"encoding/json"
+
 	"fmt"
 	"net/http"
 	"time"
@@ -23,7 +24,7 @@ func (api *API) login(c *gin.Context) {
 		return
 	}
 
-	if request.Username == "" || request.Password == "" {
+	if request.Email == "" || request.Password == "" {
 		c.JSON(http.StatusUnauthorized, gin.H{
 			"code":    http.StatusUnauthorized,
 			"message": "username dan password tidak boleh kosong",
@@ -31,7 +32,7 @@ func (api *API) login(c *gin.Context) {
 		return
 	}
 
-	resp, err := api.userRepo.CheckUser(request.Username, request.Password)
+	resp, err := api.userRepo.CheckUser(request.Email, request.Password)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{
 			"code":    http.StatusInternalServerError,
@@ -48,7 +49,7 @@ func (api *API) login(c *gin.Context) {
 			"message": "user credential invalid",
 		})
 		return
-	} else if data.Username != request.Username {
+	} else if data.Email != request.Email {
 		c.JSON(http.StatusUnauthorized, gin.H{
 			"code":    http.StatusUnauthorized,
 			"message": "user credential invalid",
@@ -106,6 +107,7 @@ func (api *API) Register(c *gin.Context) {
 		return
 	}
 
+	// users,
 	_, err = api.userRepo.CheckUserRegis(request.Email)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{
@@ -115,9 +117,23 @@ func (api *API) Register(c *gin.Context) {
 		return
 	}
 
+	// if users != nil {
+	// 	c.JSON(http.StatusBadRequest, "Email sudah terpakai")
+	// 	return
+	// }
+
+	// _, err = api.userRepo.CheckUserRegisName(request.Username)
+	// if err != nil {
+	// 	c.JSON(http.StatusInternalServerError, gin.H{
+	// 		"code":    http.StatusInternalServerError,
+	// 		"message": "Username sudah terdaftar",
+	// 	})
+	// 	return
+	// }
+
 	// data := *resp
 
-	records := `INSERT INTO user (username, password, email, role) VALUES (?, ?, ?, ?);`
+	records := `INSERT INTO user (username, password, email, role, jenjang, kota) VALUES (?, ?, ?, ?, ?, ?);`
 	query, err := database.DB.Prepare(records)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{
@@ -127,7 +143,7 @@ func (api *API) Register(c *gin.Context) {
 		return
 	}
 
-	_, err = query.Exec(request.Username, request.Password, request.Email, "user")
+	_, err = query.Exec(request.Username, request.Password, request.Email, request.Jenjang, request.Kota, "user")
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{
 			"code":    http.StatusInternalServerError,
@@ -141,4 +157,16 @@ func (api *API) Register(c *gin.Context) {
 		"message": "Register Success",
 	})
 
+}
+
+func (api *API) Logout(c *gin.Context) {
+	http.SetCookie(c.Writer, &http.Cookie{
+		Name:    "token",
+		Value:   "",
+		Expires: time.Unix(0, 0),
+	})
+	c.JSON(http.StatusOK, gin.H{
+		"code":    http.StatusOK,
+		"message": "Logout Success",
+	})
 }

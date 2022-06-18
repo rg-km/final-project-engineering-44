@@ -11,8 +11,9 @@ import "./landingPage.css";
 import { Link } from "react-router-dom";
 import TopCategory from "../../components/List/Top-Category";
 import Footer from "../../components/Footer/Footer";
-import ListBeasiswa from "../../components/List/List-Beasiswa";
 import { useState } from "react";
+import ListBeasiswa from "../../components/List/List-Beasiswa";
+import News from "../../components/News/News";
 
 const LandingPage = () => {
   const [user, setUser] = useState({
@@ -96,27 +97,23 @@ const LandingPage = () => {
             <div className="tag-line-bottom">
               <p>
                 <BsPerson />
-                <strong>1,000</strong>user dengan tingkat keberhasilan{" "}
+                <strong>1,000</strong> user dengan tingkat keberhasilan{" "}
                 <strong>90%</strong>
               </p>
             </div>
           </div>
         </div>
       </div>
-      {/* fit, biar ga penuh kamu coding disini, list nya pisahin di component aja biar bisa di import */}
       <div className="list-konten">
         <div>
           <h1>List Beasiswa</h1>
           <ListBeasiswa />
-          {/* ini list beasiswa buat folder baru aja di component namanya list nanti import disini datanya sementara pake dummy dlu aja nanti di buatin store zustand nya */}
         </div>
         <div>
           <h1>Top News</h1>
-          {/* sama list ini juga buat di component */}
+          <News />
         </div>
         <div className="kategori-beasiswa">
-          {/* gini kah maksudnya dap, eh iya itu yg footer nanti lagi kulanjutnya */}
-          {/* oke mantap fit */}
           <h1>Top Category</h1>
           <TopCategory />
         </div>

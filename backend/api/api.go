@@ -9,16 +9,18 @@ import (
 )
 
 type API struct {
-	userRepo repo.UserRepository
-	gin      *gin.Engine
+	userRepo        repo.UserRepository
+	scholarshipRepo repo.ScholarshipsRepository
+	gin             *gin.Engine
 }
 
-func NewAPI(userRepo repo.UserRepository) *API {
+func NewAPI(userRepo repo.UserRepository, scholarshipRepo repo.ScholarshipsRepository) *API {
 	gin := gin.Default()
 
 	api := &API{
-		userRepo: userRepo,
-		gin:      gin,
+		userRepo:        userRepo,
+		scholarshipRepo: scholarshipRepo,
+		gin:             gin,
 	}
 
 	// gin.POST("/login/siswa", api.LoginSiswa)
@@ -29,6 +31,10 @@ func NewAPI(userRepo repo.UserRepository) *API {
 	// }
 	gin.POST("/api/login", api.login)
 	gin.POST("/api/register", api.Register)
+	gin.POST("/api/logout", api.Logout)
+	gin.GET("/api/user", api.getUser)
+	gin.GET("/api/scholarships", api.getScholarships)
+	gin.POST("/api/upload", api.uploadScholarships)
 
 	return api
 }
