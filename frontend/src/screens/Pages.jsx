@@ -7,6 +7,7 @@ import Dashboard from "../pages/Dashboard/Dashboard";
 import Scholarship from "../components/Scholarship/Scholarship";
 import SidebarNews from "../components/SidebarNews/SidebarNews";
 import Beasiswa from "../pages/Beasiswa/Beasiswa";
+import ProfilPage from "../pages/ProfilPage/ProfilPage";
 
 const Pages = () => {
   return (
@@ -19,6 +20,7 @@ const Pages = () => {
         <Route path="/scholarship" element={<Scholarship />} />
         <Route path="/news" element={<SidebarNews />} />
         <Route path="/beasiswa" element={<Beasiswa />} />
+        <Route path="/profil" element={<ProfilPage />} />
       </Routes>
     </div>
   );

@@ -6,7 +6,7 @@ import LogoLPDP from "../../assets/logo-lpdp.png";
 import LogoDjarum from "../../assets/logo-djarum-beasiswa.png";
 import LogoRG from "../../assets/logo-ruang-guru.png";
 import { BsSearch } from "react-icons/bs";
-import { BsPerson } from "react-icons/bs";
+import { AiOutlineUser } from "react-icons/ai";
 import "./landingPage.css";
 import { Link } from "react-router-dom";
 import TopCategory from "../../components/List/Top-Category";
@@ -96,7 +96,7 @@ const LandingPage = () => {
             </form>
             <div className="tag-line-bottom">
               <p>
-                <BsPerson />
+                <AiOutlineUser />
                 <strong>1,000</strong>user dengan tingkat keberhasilan{" "}
                 <strong>90%</strong>
               </p>
