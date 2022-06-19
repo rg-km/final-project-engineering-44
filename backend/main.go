@@ -15,7 +15,8 @@ func main() {
 	}
 
 	user_repo := repo.NewUserRepository(db)
-	main_api := api.NewAPI(*user_repo)
+	scholarships_repo := repo.NewScholarshipsRepository(db)
+	main_api := api.NewAPI(*user_repo, *scholarships_repo)
 
 	main_api.Start()
 }

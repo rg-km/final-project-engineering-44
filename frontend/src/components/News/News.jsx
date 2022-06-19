@@ -6,10 +6,11 @@ import axios from "axios";
 import URL from "./config";
 
 const News = () => {
-  const [berita, setBerita] = useState([]);
+  const [content, setContent] = useState([]);
   const fetchData = async () => {
     const res = await axios.get(URL);
-    setBerita(res.data.articles);
+    console.log(res.data.data.memes);
+    setContent(res.data.data.memes);
   };
 
   useEffect(() => {
@@ -18,14 +19,14 @@ const News = () => {
   return (
     <div className="news">
       <Swiper slidesPerView={4} spaceBetween={50}>
-        {berita.map((data) => (
+        {content.map((data) => (
           <SwiperSlide key={data.id}>
             <div className="new">
               <div className="image">
-                <img src={data.urlToImage} alt={data.title} />
+                <img src={data.url} alt={data.title} />
               </div>
               <div className="text">
-                <h2>{data.title}</h2>
+                <h2>{data.name}</h2>
               </div>
             </div>
           </SwiperSlide>
