@@ -2,6 +2,7 @@ package api
 
 import (
 	"net/http"
+	"strconv"
 
 	"github.com/gin-gonic/gin"
 )
@@ -58,4 +59,51 @@ func (a *API) GetByEmail(c *gin.Context) {
 	}
 	c.JSON(http.StatusOK, user)
 
+}
+
+func (a *API) GetById(c *gin.Context) {
+	id := c.Param("id")
+	user, err := strconv.Atoi(id)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{
+			"message": err.Error(),
+		})
+		return
+	}
+
+	data, err := a.userRepo.GetById(int(user))
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{
+			"message": err.Error(),
+		})
+		return
+	}
+
+	c.JSON(http.StatusOK, gin.H{
+		"message": "Id berhasil ditemukan",
+		"data":    data,
+	})
+}
+
+func (a *API) DeleteUser(c *gin.Context) {
+	id := c.Param("id")
+	user, err := strconv.Atoi(id)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{
+			"message": err.Error(),
+		})
+		return
+	}
+
+	err = a.userRepo.Delete(int(user))
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{
+			"message": err.Error(),
+		})
+		return
+	}
+
+	c.JSON(http.StatusOK, gin.H{
+		"message": "Id berhasil dihapus",
+	})
 }

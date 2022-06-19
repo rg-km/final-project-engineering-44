@@ -54,7 +54,8 @@ func CreateTableDatabse(db *sql.DB) (string, error) {
 		FOREIGN KEY (User_id) REFERENCES user (id)
 		FOREIGN KEY (Category_id) REFERENCES categories (id)
 		);
-	INSERT INTO scholarship (User_id, Name, Jenjang, Kota, Description, Image, Category_id) VALUES (1, 'SMPN 1', 'SMP', 'Jakarta', 'SMPN 1 adalah sekolah menengah pertama di Jakarta', 'image.jpg', 1);
+	INSERT INTO scholarship (User_id, Name, Jenjang, Kota, Description, Image, Category_id) VALUES (1, 'SMPN 1', 'SMP', 'Jakarta', 'SMPN 1 adalah sekolah menengah pertama di Jakarta', 'image.jpg', 1),
+	(2, 'SMAN 1', 'SMA', 'Jakarta', 'SMPN 1 adalah sekolah menengah pertama di Jakarta', 'image.jpg', 1);
 	
 	CREATE TABLE IF NOT EXISTS comments (
 		Id INTEGER PRIMARY KEY AUTOINCREMENT,

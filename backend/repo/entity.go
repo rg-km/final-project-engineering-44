@@ -20,7 +20,7 @@ type UserResponse struct {
 	Role     string `json:"role"`
 }
 
-type Scholarships struct {
+type Scholarship struct {
 	Id          int    `json:"id"`
 	User_id     int    `json:"user_id"`
 	Name        string `json:"name"`

@@ -32,9 +32,16 @@ func NewAPI(userRepo repo.UserRepository, scholarshipRepo repo.ScholarshipsRepos
 	gin.POST("/api/login", api.login)
 	gin.POST("/api/register", api.Register)
 	gin.POST("/api/logout", api.Logout)
+	gin.DELETE("/api/user/:id", api.DeleteUser)
 	gin.GET("/api/user", api.getUser)
 	gin.GET("/api/scholarships", api.getScholarships)
-	gin.POST("/api/upload", api.uploadScholarships)
+	gin.GET("/api/scholarships/id/:id", api.getScholarshipsById)
+	gin.GET("/api/scholarships/jenjang/:jenjang", api.getScholarshipsByJenjang)
+	gin.POST("/api/scholarships/upload", api.uploadScholarships)
+	gin.PUT("/api/scholarships/:id", api.Updatebeasiswa)
+	gin.DELETE("/api/scholarships/:id", api.DeleteScholarships)
+
+	// gin.PUT("/api/update", api.updateScholarships)
 
 	return api
 }
