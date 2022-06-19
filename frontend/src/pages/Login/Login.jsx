@@ -26,11 +26,15 @@ const Login = () => {
       email: data.email,
       password: data.password,
     };
-    const res = await axios.post("http://localhost:5000/auth/sign-in", user);
-    console.log(res.data.code);
-    if (res.status === 200) {
-      setIsSubmit(true);
-    }
+    axios({
+      method: "post",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      url: "http://localhost:8080/api/login",
+      data: user,
+      withCredentials: true,
+    })
+      .then((res) => console.log(res.data))
+      .catch((e) => console.log(e));
   };
 
   return (

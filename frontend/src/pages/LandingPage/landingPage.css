@@ -127,6 +127,12 @@
     margin-right: 55px;
 }
 
+.tag-line-bottom p {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
 .list-konten {
     margin: 50px 40px;
     display: flex;
