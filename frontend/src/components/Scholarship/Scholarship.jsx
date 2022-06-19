@@ -1,6 +1,6 @@
-import React from "react";
-import Sidebar from "../Sidebar/Sidebar";
-import "./scholarship.css";
+import React from "react" ;
+import Sidebar from "../Sidebar/Sidebar" ;
+import "./scholarship.css" ;
 
 const Scholarship = () => {
   return (
@@ -8,7 +8,7 @@ const Scholarship = () => {
       <Sidebar />
       <div className="content">scholarship</div>
     </div>
-  );
-};
+  ) ;
+} ;
 
-export default Scholarship;
+export default Scholarship; 
