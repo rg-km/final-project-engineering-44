@@ -26,7 +26,7 @@ const Login = () => {
       email: data.email,
       password: data.password,
     };
-    axios({
+    await axios({
       method: "post",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       url: "http://localhost:8080/api/login",
