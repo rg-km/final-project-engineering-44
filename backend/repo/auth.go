@@ -95,10 +95,10 @@ func (u *UserRepository) GetById(id int) (User, error) {
 	return user, nil
 }
 
-func (u *UserRepository) GetByEmail(email string) (User, error) {
-	sqlStatement := `SELECT * FROM user WHERE email = ?;`
+func (u *UserRepository) GetByName(username string) (User, error) {
+	sqlStatement := `SELECT * FROM user WHERE username = ?;`
 
-	rows, err := u.db.Query(sqlStatement, email)
+	rows, err := u.db.Query(sqlStatement, username)
 	if err != nil {
 		return User{}, err
 	}

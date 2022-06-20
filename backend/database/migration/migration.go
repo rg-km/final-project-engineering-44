@@ -31,15 +31,9 @@ func CreateTableDatabse(db *sql.DB) (string, error) {
 		Email varchar(255) NOT NULL UNIQUE,
 		Password varchar(255) NOT NULL,
 		Jenjang varchar (255) NOT NULL,
-		Kota varchat (255) NOT NULL,
+		Kota varchar (255) NOT NULL,
 		Role varchar(255) NOT NULL
 		);
-
-	CREATE TABLE IF NOT EXISTS categories (
-		id INTEGER PRIMARY KEY AUTOINCREMENT,
-		category_name VARCHAR(255) NOT NULL,
-		created_at DATETIME DEFAULT CURRENT_TIMESTAMP
-		);	
 
 	CREATE TABLE IF NOT EXISTS scholarship (
 		Id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -49,13 +43,11 @@ func CreateTableDatabse(db *sql.DB) (string, error) {
 		Kota VARCHAR NOT NULL,
 		Description TEXT NOT NULL,
 		Image VARCHAR DEFAULT 'image.jpg',
-		Category_id INTEGER NOT NULL,
 		Created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
 		FOREIGN KEY (User_id) REFERENCES user (id)
-		FOREIGN KEY (Category_id) REFERENCES categories (id)
 		);
-	INSERT INTO scholarship (User_id, Name, Jenjang, Kota, Description, Image, Category_id) VALUES (1, 'SMPN 1', 'SMP', 'Jakarta', 'SMPN 1 adalah sekolah menengah pertama di Jakarta', 'image.jpg', 1),
-	(2, 'SMAN 1', 'SMA', 'Jakarta', 'SMPN 1 adalah sekolah menengah pertama di Jakarta', 'image.jpg', 1);
+	INSERT INTO scholarship (User_id, Name, Jenjang, Kota, Description, Image) VALUES (1, 'SMPN 1', 'SMP', 'Jakarta', 'SMPN 1 adalah sekolah menengah pertama di Jakarta', 'image.jpg'),
+	(2, 'SMAN 1', 'SMA', 'Jakarta', 'SMPN 1 adalah sekolah menengah pertama di Jakarta', 'image.jpg');
 	
 	CREATE TABLE IF NOT EXISTS comments (
 		Id INTEGER PRIMARY KEY AUTOINCREMENT,

@@ -37,20 +37,9 @@ func (a *API) getUser(c *gin.Context) {
 
 }
 
-// func (a *API) GetById(c *gin.Context) {
-// 	user, err := a.userRepo.GetById(int(id))
-// 	if err != nil {
-// 		var userListErrorResponse UserListErrorResponse
-// 		userListErrorResponse.Error = err.Error()
-// 		c.JSON(http.StatusInternalServerError, userListErrorResponse)
-// 		return
-// 	}
-// 	c.JSON(http.StatusOK, user)
-
-// }
-
-func (a *API) GetByEmail(c *gin.Context) {
-	user, err := a.userRepo.GetByEmail("")
+func (a *API) GetByName(c *gin.Context) {
+	username := c.Param("username")
+	user, err := a.userRepo.GetByName(username)
 	if err != nil {
 		var userListErrorResponse UserListErrorResponse
 		userListErrorResponse.Error = err.Error()
@@ -58,7 +47,6 @@ func (a *API) GetByEmail(c *gin.Context) {
 		return
 	}
 	c.JSON(http.StatusOK, user)
-
 }
 
 func (a *API) GetById(c *gin.Context) {

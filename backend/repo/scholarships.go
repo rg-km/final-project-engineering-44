@@ -128,26 +128,6 @@ func (s *ScholarshipsRepository) Delete(id int) (Scholarship, error) {
 	return res, nil
 }
 
-// func (s *ScholarshipsRepository) updateScholarships(id int, name string, description string, image string, jenjang string, kota string, category_id int) error {
-// 	sqlStatement := `UPDATE scholarship SET name = ?, description = ?, image = ?, jenjang = ?, kota = ?, category_id = ? WHERE id = ?;`
-
-// 	_, err := s.db.Exec(sqlStatement, name, description, image, jenjang, kota, category_id, id)
-// 	if err != nil {
-// 		return err
-// 	}
-// 	return nil
-// }
-
-// func (s *ScholarshipsRepository) Delete(id int) error {
-// 	sqlStatement := `DELETE FROM scholarship WHERE id = ?;`
-
-// 	_, err := s.db.Exec(sqlStatement, id)
-// 	if err != nil {
-// 		return err
-// 	}
-// 	return nil
-// }
-
 // func (s *ScholarshipsRepository) uploadScholarships(scholarship Scholarship) error {
 // 	sqlStatement := `INSERT INTO scholarship (user_id, name, description, image, jenjang, kota, category_id, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?);`
 
