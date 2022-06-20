@@ -2,6 +2,7 @@ package api
 
 import (
 	"net/http"
+	"strconv"
 
 	"github.com/gin-gonic/gin"
 )
@@ -36,20 +37,9 @@ func (a *API) getUser(c *gin.Context) {
 
 }
 
-// func (a *API) GetById(c *gin.Context) {
-// 	user, err := a.userRepo.GetById(int(id))
-// 	if err != nil {
-// 		var userListErrorResponse UserListErrorResponse
-// 		userListErrorResponse.Error = err.Error()
-// 		c.JSON(http.StatusInternalServerError, userListErrorResponse)
-// 		return
-// 	}
-// 	c.JSON(http.StatusOK, user)
-
-// }
-
-func (a *API) GetByEmail(c *gin.Context) {
-	user, err := a.userRepo.GetByEmail("")
+func (a *API) GetByName(c *gin.Context) {
+	username := c.Param("username")
+	user, err := a.userRepo.GetByName(username)
 	if err != nil {
 		var userListErrorResponse UserListErrorResponse
 		userListErrorResponse.Error = err.Error()
@@ -57,5 +47,85 @@ func (a *API) GetByEmail(c *gin.Context) {
 		return
 	}
 	c.JSON(http.StatusOK, user)
-
 }
+
+func (a *API) GetById(c *gin.Context) {
+	id := c.Param("id")
+	user, err := strconv.Atoi(id)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{
+			"message": err.Error(),
+		})
+		return
+	}
+
+	data, err := a.userRepo.GetById(int(user))
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{
+			"message": err.Error(),
+		})
+		return
+	}
+
+	c.JSON(http.StatusOK, gin.H{
+		"message": "Id berhasil ditemukan",
+		"data":    data,
+	})
+}
+
+func (a *API) DeleteUser(c *gin.Context) {
+	id := c.Param("id")
+	user, err := strconv.Atoi(id)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{
+			"message": err.Error(),
+		})
+		return
+	}
+
+	err = a.userRepo.Delete(int(user))
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{
+			"message": err.Error(),
+		})
+		return
+	}
+
+	c.JSON(http.StatusOK, gin.H{
+		"message": "Id berhasil dihapus",
+	})
+}
+
+// User bisa mengupadate data user
+
+// func (a *API) UpdateUser(c *gin.Context) {
+// 	id := c.Param("id")
+// 	user, err := strconv.Atoi(id)
+// 	if err != nil {
+// 		c.JSON(http.StatusBadRequest, gin.H{
+// 			"message": err.Error(),
+// 		})
+// 		return
+// 	}
+
+// 	var userRequest reqRegister
+// 	err = c.ShouldBindJSON(&userRequest)
+// 	if err != nil {
+// 		c.JSON(http.StatusBadRequest, gin.H{
+// 			"message": err.Error(),
+// 		})
+// 		return
+// 	}
+
+// 	_, err = a.userRepo.Update(int(user), userRequest)
+// 	if err != nil {
+// 		c.JSON(http.StatusInternalServerError, gin.H{
+// 			"message": err.Error(),
+// 		})
+// 		return
+// 	}
+
+// 	c.JSON(http.StatusOK, gin.H{
+// 		"message": "Id berhasil diupdate",
+// 	})
+// }

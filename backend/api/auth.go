@@ -133,7 +133,7 @@ func (api *API) Register(c *gin.Context) {
 
 	// data := *resp
 
-	records := `INSERT INTO user (username, password, email, role, jenjang, kota) VALUES (?, ?, ?, ?, ?, ?);`
+	records := `INSERT INTO user (username, password, email, jenjang, kota, role) VALUES (?, ?, ?, ?, ?, ?);`
 	query, err := database.DB.Prepare(records)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{

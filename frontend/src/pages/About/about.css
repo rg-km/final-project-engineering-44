@@ -1,29 +1,34 @@
-.img {
-    height: 90vh;
+.img-top-left{
+    height: 5vh;
+    width: 60vh;
+    padding-left: 10vh;
+    margin-top: 5vh;
+}
+
+.size-logo{
+    height: 7vh;
+}
+
+.img-middle-left {
+    height: 120vh;
     width: 90vh;
 }
 
-.landing {
+.about {
     display: flex;
     flex-direction: column;
-
 }
 
-.wrapper-up {
-    display: flex;
-    flex-direction: row;
-    /* align-items: center; */
-    /* justify-content: center; */
-    gap: 90px;
+.about h1{
+    text-align: center;
+    font-size: 6vh;
 }
 
-.wrapper-up-right {
+.wrapper-top-right {
     display: flex;
     flex-direction: column;
-    margin-top: 40px;
 }
 
-/* user */
 .profile {
     display: flex;
     align-items: center;
@@ -37,12 +42,15 @@
     border-radius: 50%;
 }
 
-.button {
+.top-right-button {
     display: flex;
     flex-direction: row;
     gap: 10px;
     align-items: center;
     justify-content: right;
+    position:absolute;
+    top: 40px;
+    right: 170px;
 }
 
 .button-SignIn {
@@ -75,138 +83,92 @@
     font-weight: bold;
 }
 
-.hero {
-    margin-top: 90px;
-}
-
-.judul {
-    font-size: 70px;
-    margin-bottom: -5px;
-    padding-right: 50px;
-    color: #1f4690;
-}
-
-.tagline {
-    font-size: 25px;
-    font-weight: 500;
-    color: #1f4690;
-}
-
-.form-input {
+.wrapper-up {
     display: flex;
     flex-direction: row;
-    gap: 15px;
+    gap: 90px;
 }
 
-.input {
-    border: 0px;
-    border-radius: 5px;
-    background-color: #e4e3e3;
-    padding: 10px;
-    width: 450px;
+.img-big-logo{
+    height: 10vh;
+    width: 60vh;
+    margin: 10vh 10vh 7vh 15vh;
 }
 
-.button-search {
-    border: 0px;
-    border-radius: 5px;
-    background-color: #1f4690;
-    padding: 10px;
-    width: 60px;
+.deskripsi{
+    font-size: 30px;
+    font-weight: 450;
+    text-align: justify;
+    margin: 0 50px 0 0;
+    line-height: 45px;
 }
 
-.icon {
-    color: white;
-    size: 30px;
-}
-
-.tag-line-bottom {
+.wrapper-bottom-content{
     display: flex;
     flex-direction: row;
+    margin: 10vh;
     align-items: center;
-    justify-content: right;
-    margin-right: 55px;
+    justify-content: space-evenly;
 }
 
-.tag-line-bottom p {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-}
-
-.list-konten {
-    margin: 50px 40px;
+.wrapper-bottom-content-name{
     display: flex;
     flex-direction: column;
-    gap: 100px;
-}
-
-
-.kategori-beasiswa {
-    display: flex;
-    flex-direction: column;
-}
-
-.kategori-beasiswa h1 {
-    margin-bottom: 30px;
-}
-
-/* .wrapper-powered {
-    display: flex;
-    flex-direction: row;
-    gap: 170px;
-    margin-top: 60px;
     align-items: center;
-    justify-content:center;
-} */
+    justify-content: space-evenly;
+}
 
-.powered {
+.wrapper-bottom-content-name p{
+    font-size: 15px;
+    margin: 0;
+}
+
+.sponsor {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-top: 80px;
-    /* justify-content: center; */
     width: 100%;
 }
 
-#logo-powered {
+#logo-sponsor {
     display: flex;
     flex-direction: row;
     gap: 30px;
-
 }
 
-#logo-powered img {
+#logo-sponsor img {
     object-fit: contain;
 }
 
 .img-logo-lpdp {
-    height: 4em;
-    width: 8em;
-}
-
-.img-logo-djarum {
-    height: 4em;
+    height: 6em;
     width: 10em;
 }
 
-.img-logo-rg {
-    height: 4em;
-    width: 5em;
+.img-logo-djarum {
+    height: 6em;
+    width: 12em;
 }
 
-.logo-bawah {
+.img-logo-rg {
+    height: 6em;
+    width: 7em;
+}
+
+.decor-bawah {
     width: 100%;
     height: 35vh;
     position: relative;
 }
 
-.logo-bawah .img-left {
+.decor-bawah .img-decor-left {
     position: absolute;
     left: 0;
     bottom: 0;
 }
 
-.logo-bawah .img-right {
+.decor-bawah .img-decor-right {
     position: absolute;
     right: 0;
     bottom: 0;

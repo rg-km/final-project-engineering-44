@@ -10,7 +10,7 @@ import (
 )
 
 func (api *API) AllowOrigin(c *gin.Context) {
-	c.Writer.Header().Set("Access-Control-Allow-Origin", "http://localhost:8080")
+	c.Writer.Header().Set("Access-Control-Allow-Origin", "*")
 	c.Writer.Header().Set("Access-Control-Allow-Methods", "GET, POST")
 	c.Writer.Header().Set("Access-Control-Allow-Headers", "*")
 	c.Writer.Header().Set("Access-Control-Allow-Credentials", "true")
