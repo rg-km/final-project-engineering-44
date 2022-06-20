@@ -4,9 +4,10 @@ import (
 	"auth/database"
 	"encoding/json"
 
-	"fmt"
 	"net/http"
 	"time"
+
+	"golang.org/x/crypto/bcrypt"
 
 	"github.com/gin-gonic/gin"
 	"github.com/golang-jwt/jwt/v4"
@@ -32,7 +33,7 @@ func (api *API) login(c *gin.Context) {
 		return
 	}
 
-	resp, err := api.userRepo.CheckUser(request.Email, request.Password)
+	resp, err := api.userRepo.CheckUser(request.Email)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{
 			"code":    http.StatusInternalServerError,
@@ -41,18 +42,19 @@ func (api *API) login(c *gin.Context) {
 		return
 	}
 	data := *resp
-	fmt.Println(data)
-	fmt.Println(data.Email, data.Password, data.Username, request.Password)
-	if data.Password != request.Password {
+
+	if data.Email != request.Email {
 		c.JSON(http.StatusUnauthorized, gin.H{
 			"code":    http.StatusUnauthorized,
 			"message": "user credential invalid",
 		})
 		return
-	} else if data.Email != request.Email {
+	}
+
+	if bcrypt.CompareHashAndPassword([]byte(data.Password), []byte(request.Password)) != nil {
 		c.JSON(http.StatusUnauthorized, gin.H{
 			"code":    http.StatusUnauthorized,
-			"message": "user credential invalid",
+			"message": "password invalid",
 		})
 		return
 	}
@@ -133,6 +135,8 @@ func (api *API) Register(c *gin.Context) {
 
 	// data := *resp
 
+	password, _ := bcrypt.GenerateFromPassword([]byte(request.Password), 10)
+
 	records := `INSERT INTO user (username, password, email, jenjang, kota, role) VALUES (?, ?, ?, ?, ?, ?);`
 	query, err := database.DB.Prepare(records)
 	if err != nil {
@@ -143,7 +147,7 @@ func (api *API) Register(c *gin.Context) {
 		return
 	}
 
-	_, err = query.Exec(request.Username, request.Password, request.Email, request.Jenjang, request.Kota, "user")
+	_, err = query.Exec(request.Username, string(password), request.Email, request.Jenjang, request.Kota, "user")
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{
 			"code":    http.StatusInternalServerError,
