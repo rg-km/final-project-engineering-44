@@ -38,7 +38,7 @@ func (a *API) uploadScholarships(c *gin.Context) {
 		return
 	}
 
-	records := `INSERT INTO scholarship (name, jenjang, kota, description, image, category_id) VALUES (?, ?, ?, ?, ?, ?);`
+	records := `INSERT INTO scholarship (name, jenjang, kota, description, image) VALUES (?, ?, ?, ?, ?);`
 	query, err := database.DB.Prepare(records)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{
@@ -48,7 +48,7 @@ func (a *API) uploadScholarships(c *gin.Context) {
 		return
 	}
 
-	_, err = query.Exec(beasiswa.Name, beasiswa.Jenjang, beasiswa.Kota, beasiswa.Description, beasiswa.Image, beasiswa.Category_id)
+	_, err = query.Exec(beasiswa.Name, beasiswa.Jenjang, beasiswa.Kota, beasiswa.Description, beasiswa.Image)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{
 			"code":    http.StatusInternalServerError,
