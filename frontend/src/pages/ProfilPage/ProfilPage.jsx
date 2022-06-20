@@ -29,36 +29,48 @@ const ProfilPage = () => {
                         <div className="user">
                             <FcBusinesswoman />
                             <div>
-                                <p>John Doe</p>
-                                <p>Perguruan Tinggi <br /> Yogyakarta</p>
+                                <p><strong>John Doe</strong></p>
+                                <p className="asal-user">Perguruan Tinggi Yogyakarta</p>
                             </div>
                         </div>
                         <div className="pengatran-user">
-                            <p><AiOutlineUser />Profile</p>
-                            <p><AiOutlineFileText />Grades</p>
-                            <p><BsKeyFill />Change Password</p>
-                            <p><VscSignIn />Sign Out</p>
+                            <div className="pengatran-user-1">
+                                <AiOutlineUser />
+                                <p>Profile</p>
+                            </div>
+                            <div className="pengatran-user-1">
+                                <AiOutlineFileText />
+                                <p>Grades</p>
+                            </div>
+                            <div className="pengatran-user-1">
+                                <BsKeyFill />
+                                <p>Change Password</p> 
+                            </div>
+                            <div className="pengatran-user-1">
+                                <VscSignIn />
+                                <p>Sign Out</p>
+                            </div>                            
                         </div>
                     </div>
                     <div className="isi-profil">
                         <div>
-                            <p>Nama</p>
+                            <p><strong>Nama</strong></p>
                             <p className="keterangan-isi-profil">John Doe</p>
                         </div>
                         <div>
-                            <p>Username</p>
+                            <p><strong>Username</strong></p>
                             <p className="keterangan-isi-profil">johndoe99</p>
                         </div>
                         <div>
-                            <p>Email</p>
+                            <p><strong>Email</strong></p>
                             <p className="keterangan-isi-profil">johndoe@gmail.com</p>
                         </div>
                         <div>
-                            <p>Jenjang</p>
+                            <p><strong>Jenjang</strong></p>
                             <p className="keterangan-isi-profil">Perguruan Tinggi</p>
                         </div>
                         <div>
-                            <p>Domisili</p>
+                            <p><strong>Domisili</strong></p>
                             <p className="keterangan-isi-profil">Yogyakarta</p>
                         </div>
                     </div>
