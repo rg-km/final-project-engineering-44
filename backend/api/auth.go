@@ -134,7 +134,6 @@ func (api *API) Register(c *gin.Context) {
 	// }
 
 	// data := *resp
-
 	password, _ := bcrypt.GenerateFromPassword([]byte(request.Password), 10)
 
 	records := `INSERT INTO user (username, password, email, jenjang, kota, role) VALUES (?, ?, ?, ?, ?, ?);`
