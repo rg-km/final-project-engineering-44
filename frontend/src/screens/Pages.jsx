@@ -8,6 +8,7 @@ import Scholarship from "../components/Scholarship/Scholarship";
 import SidebarNews from "../components/SidebarNews/SidebarNews";
 import Beasiswa from "../pages/Beasiswa/Beasiswa";
 import ProfilPage from "../pages/ProfilPage/ProfilPage";
+import AboutPage from "../pages/About/About";
 
 const Pages = () => {
   return (
@@ -21,6 +22,7 @@ const Pages = () => {
         <Route path="/news" element={<SidebarNews />} />
         <Route path="/beasiswa" element={<Beasiswa />} />
         <Route path="/profil" element={<ProfilPage />} />
+        <Route path="/about" element={<AboutPage />} />
       </Routes>
     </div>
   );
