@@ -39,7 +39,13 @@ const Register = () => {
       jenjang: data.jenjang,
       domisili: data.domisili,
     };
-    await axios.post("http://localhost:8080/api/register", user);
+    await axios({
+      method: "post",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      url: "/register",
+      data: user,
+      withCredentials: true,
+    });
   };
 
   return (

@@ -23,7 +23,7 @@ func (api *API) AllowOrigin(c *gin.Context) {
 
 func (api *API) AuthMiddleware(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-
+		
 		encoder := json.NewEncoder(w)
 		// Ambil token dari cookie yang dikirim ketika request
 		c, err := r.Cookie("token")
@@ -113,7 +113,7 @@ func (api *API) GET(next http.Handler) http.Handler {
 
 func (api *API) POST(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-
+		
 		encoder := json.NewEncoder(w)
 		if r.Method != http.MethodPost {
 			encoder.Encode(gin.H{
