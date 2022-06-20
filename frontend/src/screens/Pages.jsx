@@ -20,7 +20,7 @@ const Pages = () => {
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/scholarship" element={<Scholarship />} />
         <Route path="/news" element={<SidebarNews />} />
-        <Route path="/beasiswa" element={<Beasiswa />} />
+        <Route path="/beasiswa/kota=:kota" element={<Beasiswa />} />
         <Route path="/profil" element={<ProfilPage />} />
         <Route path="/about" element={<AboutPage />} />
       </Routes>
