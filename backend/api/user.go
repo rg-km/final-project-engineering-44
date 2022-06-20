@@ -96,34 +96,36 @@ func (a *API) DeleteUser(c *gin.Context) {
 	})
 }
 
-func (a *API) UpdateUser(c *gin.Context) {
-	id := c.Param("id")
-	user, err := strconv.Atoi(id)
-	if err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{
-			"message": err.Error(),
-		})
-		return
-	}
+// User bisa mengupadate data user
 
-	var userRequest reqRegister
-	err = c.ShouldBindJSON(&userRequest)
-	if err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{
-			"message": err.Error(),
-		})
-		return
-	}
+// func (a *API) UpdateUser(c *gin.Context) {
+// 	id := c.Param("id")
+// 	user, err := strconv.Atoi(id)
+// 	if err != nil {
+// 		c.JSON(http.StatusBadRequest, gin.H{
+// 			"message": err.Error(),
+// 		})
+// 		return
+// 	}
 
-	_, err = a.userRepo.Update(int(user), userRequest)
-	if err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{
-			"message": err.Error(),
-		})
-		return
-	}
+// 	var userRequest reqRegister
+// 	err = c.ShouldBindJSON(&userRequest)
+// 	if err != nil {
+// 		c.JSON(http.StatusBadRequest, gin.H{
+// 			"message": err.Error(),
+// 		})
+// 		return
+// 	}
 
-	c.JSON(http.StatusOK, gin.H{
-		"message": "Id berhasil diupdate",
-	})
-}
+// 	_, err = a.userRepo.Update(int(user), userRequest)
+// 	if err != nil {
+// 		c.JSON(http.StatusInternalServerError, gin.H{
+// 			"message": err.Error(),
+// 		})
+// 		return
+// 	}
+
+// 	c.JSON(http.StatusOK, gin.H{
+// 		"message": "Id berhasil diupdate",
+// 	})
+// }

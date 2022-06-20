@@ -114,16 +114,25 @@ func (u *UserRepository) GetByName(username string) (User, error) {
 	return user, nil
 }
 
-func (u *UserRepository) Update(user User) (User, error) {
+func (u *UserRepository) Update(id int) (User, error) {
 	sqlStatement := `UPDATE user SET username = ?, email = ?, password = ?, jenjang = ?, kota = ?, role = ? WHERE id = ?;`
 
-	_, err := u.db.Exec(sqlStatement, user.Username, user.Email, user.Password, user.Jenjang, user.Kota, user.Role, user.Id)
+	rows, err := u.db.Query(sqlStatement, id)
 	if err != nil {
 		return User{}, err
 	}
 
+	var user User
+	for rows.Next() {
+		err = rows.Scan(&user.Id, &user.Username, &user.Email, &user.Password, &user.Jenjang, &user.Kota, &user.Role)
+		if err != nil {
+			return User{}, err
+		}
+	}
+
 	return user, nil
 }
+
 func (u *UserRepository) Delete(id int) error {
 	sqlStatement := `DELETE FROM user WHERE id = ?;`
 
@@ -134,23 +143,3 @@ func (u *UserRepository) Delete(id int) error {
 
 	return nil
 }
-
-// func (u *UserRepository) CheckUserRegisName(value string) (*User, error) {
-// 	sqlStatement := `SELECT * FROM user WHERE name = ?;`
-
-// 	rows, err := database.DB.Query(sqlStatement, value)
-// 	fmt.Println(rows, err)
-// 	if err != nil {
-// 		return nil, err
-// 	}
-
-// 	var user User
-// 	for rows.Next() {
-// 		err = rows.Scan(&user.Id, &user.Username, &user.Password, &user.Email, &user.Jenjang, &user.Kota, &user.Role)
-// 		if err != nil {
-// 			return nil, err
-// 		}
-// 	}
-
-// 	return &user, nil
-// }
