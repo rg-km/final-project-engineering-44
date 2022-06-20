@@ -5,6 +5,7 @@ import (
 
 	"auth/repo"
 
+	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 )
 
@@ -16,6 +17,7 @@ type API struct {
 
 func NewAPI(userRepo repo.UserRepository, scholarshipRepo repo.ScholarshipsRepository) *API {
 	gin := gin.Default()
+	gin.Use(cors.Default())
 
 	api := &API{
 		userRepo:        userRepo,
