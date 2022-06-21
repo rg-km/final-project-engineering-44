@@ -12,6 +12,7 @@
 .header-kiri-profilPage {
     display: flex;
     flex-direction: column;
+    color: #1F4690;
 }
 
 .logo-RB {
@@ -37,6 +38,10 @@
     align-items:center;
     justify-content: center;
     margin-bottom: 50px;
+}
+
+.wrapper-isi-profile h1{
+    color: #1F4690;
 }
 
 .pemisah-profile {
