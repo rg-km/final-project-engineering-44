@@ -118,9 +118,9 @@ func (u *UserRepository) GetByName(username string) (User, error) {
 
 func (u *UserRepository) Update(id int, baru User) (User, error) {
 	password, _ := bcrypt.GenerateFromPassword([]byte(baru.Password), 10)
-	sqlStatement := `UPDATE user SET username = ?, email = ?, password = ?, jenjang = ?, kota = ?, role = ? WHERE id = ?;`
+	sqlStatement := `UPDATE user SET username = ?, email = ?, password = ?, jenjang = ?, kota = ? WHERE id = ?;`
 
-	_, err := u.db.Exec(sqlStatement, baru.Username, baru.Email, password, baru.Jenjang, baru.Kota, baru.Role, id)
+	_, err := u.db.Exec(sqlStatement, baru.Username, baru.Email, string(password), baru.Jenjang, baru.Kota, id)
 	if err != nil {
 		return User{}, err
 	}
