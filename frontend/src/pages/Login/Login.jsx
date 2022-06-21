@@ -29,7 +29,7 @@ const Login = () => {
     axios({
       method: "post",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      url: "http://localhost:8080/api/login",
+      url: "/api/login",
       data: user,
       withCredentials: true,
     })

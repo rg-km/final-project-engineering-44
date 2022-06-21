@@ -2,6 +2,7 @@ package api
 
 import (
 	"auth/database"
+	"auth/repo"
 	"encoding/json"
 
 	"net/http"
@@ -201,7 +202,16 @@ func (a *API) Updatebeasiswa(c *gin.Context) {
 		return
 	}
 
-	scholarship, err := a.scholarshipRepo.Update(int(beasiswa))
+	var beasiswaUpdate repo.Scholarship
+	err = c.ShouldBindJSON(&beasiswaUpdate)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{
+			"message": err.Error(),
+		})
+		return
+	}
+
+	scholarship, err := a.scholarshipRepo.Update(int(beasiswa), beasiswaUpdate)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{
 			"message": err.Error(),
