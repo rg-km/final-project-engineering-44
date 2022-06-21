@@ -13,21 +13,14 @@ const Register = () => {
     password: "",
     jenjang: "",
     domisili: "",
-    error: true,
   });
 
   const handleChange = (e) => {
     const value = e.target.value;
-    if (e.target.name === "") {
-      setData({
-        error: true,
-      });
-    } else {
-      setData({
-        ...data,
-        [e.target.name]: value,
-      });
-    }
+    setData({
+      ...data,
+      [e.target.name]: value,
+    });
   };
 
   const handleSubmit = async (e) => {
@@ -39,7 +32,15 @@ const Register = () => {
       jenjang: data.jenjang,
       domisili: data.domisili,
     };
-    await axios.post("http://localhost:8080/api/register", user);
+    await axios({
+      method: "post",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      url: "http://localhost:8080/api/register",
+      data: user,
+      withCredentials: true,
+    })
+      .then((res) => console.log(res))
+      .catch((e) => console.log(e));
   };
 
   return (
