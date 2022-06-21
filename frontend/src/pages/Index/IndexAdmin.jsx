@@ -1,5 +1,4 @@
 import "./indexAdmin.css";
-
 import Logo from "../../assets/logo_white.png";
 import { MdOutlineDashboard } from "react-icons/md";
 import { GiOpenBook } from "react-icons/gi";
@@ -89,7 +88,7 @@ const IndexAdmin = () => {
                        
                     </div>
                 </div>
-                <div>
+                <div className="konten-grafik">
                     <p>ini buat bagannya nanti</p>
                 </div>
             </div>
