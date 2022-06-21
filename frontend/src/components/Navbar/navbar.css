@@ -44,3 +44,13 @@
     align-items: center;
     justify-content: center;
 }
+
+.navbar-sign-out {
+    background-color: #1f4690;
+    color: #fff;
+    padding: 6px 15px;
+    border: none;
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+}

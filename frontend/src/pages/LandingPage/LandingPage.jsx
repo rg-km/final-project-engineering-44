@@ -11,8 +11,16 @@ import ListBeasiswa from "../../components/List/List-Beasiswa";
 import News from "../../components/News/News";
 import Navbar from "../../components/Navbar/Navbar";
 import Hero from "../../components/Hero/Hero";
+import userStore from "../../store/userStore";
+import { useEffect } from "react";
 
 const LandingPage = () => {
+  const setUser = userStore((state) => state.setUser);
+
+  useEffect(() => {
+    setUser();
+  }, []);
+
   return (
     <div className="landing">
       <Navbar />

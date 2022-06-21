@@ -56,3 +56,15 @@
     height: 250px;
     object-fit: contain;
 }
+
+.error-msg {
+    color: red;
+    width: 80%;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    margin: 10px 0;
+    font-size: 14px;
+}

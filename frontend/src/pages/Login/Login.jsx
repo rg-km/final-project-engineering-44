@@ -68,7 +68,13 @@ const Login = () => {
               <h3>Ruang Beasiswa</h3>
             </Link>
           </div>
-          {message}
+          {message ? (
+            <div className="error-msg">
+              <h3>{message}</h3>
+            </div>
+          ) : (
+            ""
+          )}
           <LoginForm
             initialRef={initialRef}
             handleChange={handleChange}
