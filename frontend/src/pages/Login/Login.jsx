@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import "./login.css";
 import Logo from "../../assets/logo.png";
 import ImageLogin from "../../assets/login.png";
@@ -7,13 +8,15 @@ import { LoginForm } from "../../components/Form/Form";
 import axios from "axios";
 
 const Login = () => {
+  const navigate = useNavigate();
+  const initialRef = useRef(null);
+
   const [data, setData] = useState({
     email: null,
     password: null,
   });
 
-  const [isSubmit, setIsSubmit] = useState(false);
-  const [failedLogin, setFailedLogin] = useState(false);
+  const [message, setMessage] = useState("");
 
   const handleChange = (e) => {
     const value = e.target.value;
@@ -29,12 +32,22 @@ const Login = () => {
     await axios({
       method: "post",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      url: "http://localhost:8080/api/login",
+      url: "/login",
       data: user,
       withCredentials: true,
     })
-      .then((res) => console.log(res.data))
-      .catch((e) => console.log(e));
+      .then((res) => {
+        if (res.data.code === 200) {
+          setMessage(res.data.message);
+          navigate("/");
+        }
+      })
+      .catch((e) => {
+        console.log(e.response.data);
+        setMessage(e.response.data.message);
+      });
+
+    initialRef.current.value = "";
   };
 
   return (
@@ -55,9 +68,12 @@ const Login = () => {
               <h3>Ruang Beasiswa</h3>
             </Link>
           </div>
-          {isSubmit ? "Login Success" : ""}
-          {failedLogin ? "Wrong Credentials" : ""}
-          <LoginForm handleChange={handleChange} handleSubmit={handleSubmit} />
+          {message}
+          <LoginForm
+            initialRef={initialRef}
+            handleChange={handleChange}
+            handleSubmit={handleSubmit}
+          />
         </div>
         <div className="right">
           <img src={ImageLogin} alt="" />
