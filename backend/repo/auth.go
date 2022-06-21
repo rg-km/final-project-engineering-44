@@ -4,6 +4,8 @@ import (
 	"auth/database"
 	"database/sql"
 	"fmt"
+
+	"golang.org/x/crypto/bcrypt"
 )
 
 type UserRepository struct {
@@ -114,23 +116,16 @@ func (u *UserRepository) GetByName(username string) (User, error) {
 	return user, nil
 }
 
-func (u *UserRepository) Update(id int) (User, error) {
+func (u *UserRepository) Update(id int, baru User) (User, error) {
+	password, _ := bcrypt.GenerateFromPassword([]byte(baru.Password), 10)
 	sqlStatement := `UPDATE user SET username = ?, email = ?, password = ?, jenjang = ?, kota = ?, role = ? WHERE id = ?;`
 
-	rows, err := u.db.Query(sqlStatement, id)
+	_, err := u.db.Exec(sqlStatement, baru.Username, baru.Email, password, baru.Jenjang, baru.Kota, baru.Role, id)
 	if err != nil {
 		return User{}, err
 	}
 
-	var user User
-	for rows.Next() {
-		err = rows.Scan(&user.Id, &user.Username, &user.Email, &user.Password, &user.Jenjang, &user.Kota, &user.Role)
-		if err != nil {
-			return User{}, err
-		}
-	}
-
-	return user, nil
+	return baru, nil
 }
 
 func (u *UserRepository) Delete(id int) error {

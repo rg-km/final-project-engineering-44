@@ -109,7 +109,6 @@ func (api *API) Register(c *gin.Context) {
 		return
 	}
 
-	// users,
 	_, err = api.userRepo.CheckUserRegis(request.Email)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{
@@ -119,21 +118,6 @@ func (api *API) Register(c *gin.Context) {
 		return
 	}
 
-	// if users != nil {
-	// 	c.JSON(http.StatusBadRequest, "Email sudah terpakai")
-	// 	return
-	// }
-
-	// _, err = api.userRepo.CheckUserRegisName(request.Username)
-	// if err != nil {
-	// 	c.JSON(http.StatusInternalServerError, gin.H{
-	// 		"code":    http.StatusInternalServerError,
-	// 		"message": "Username sudah terdaftar",
-	// 	})
-	// 	return
-	// }
-
-	// data := *resp
 	password, _ := bcrypt.GenerateFromPassword([]byte(request.Password), 10)
 
 	records := `INSERT INTO user (username, password, email, jenjang, kota, role) VALUES (?, ?, ?, ?, ?, ?);`

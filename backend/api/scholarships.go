@@ -2,6 +2,7 @@ package api
 
 import (
 	"auth/database"
+	"auth/repo"
 	"encoding/json"
 
 	"net/http"
@@ -201,7 +202,16 @@ func (a *API) Updatebeasiswa(c *gin.Context) {
 		return
 	}
 
-	scholarship, err := a.scholarshipRepo.Update(int(beasiswa))
+	var beasiswaUpdate repo.Scholarship
+	err = c.ShouldBindJSON(&beasiswaUpdate)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{
+			"message": err.Error(),
+		})
+		return
+	}
+
+	scholarship, err := a.scholarshipRepo.Update(int(beasiswa), beasiswaUpdate)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{
 			"message": err.Error(),
@@ -213,40 +223,3 @@ func (a *API) Updatebeasiswa(c *gin.Context) {
 		"data":    scholarship,
 	})
 }
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// func (a *API) updateScholarships(c *gin.Context) {
-// 	var beasiswa reqScholarship
-// 	err := json.NewDecoder(c.Request.Body).Decode(&beasiswa)
-// 	if err != nil {
-// 		c.JSON(http.StatusBadRequest, gin.H{
-// 			"code":    http.StatusBadRequest,
-// 			"message": "Invalid request body",
-// 		})
-// 		return
-// 	}
-// 	if beasiswa.Name == "" || beasiswa.Jenjang == "" || beasiswa.Kota == "" || beasiswa.Description == "" || beasiswa.Image == "" {
-// 		c.JSON(http.StatusUnauthorized, gin.H{
-// 			"code":    http.StatusUnauthorized,
-// 			"message": "tidak boleh kosong",
-// 		})
-// 		return
-// 	}
-// 	records := `UPDATE scholarship SET name = ?, jenjang = ?, kota = ?, description = ?, image = ?, category_id = ? WHERE id = ?`
-// 	query, err := database.DB.Prepare(records)
-// 	if err != nil {
-// 		c.JSON(http.StatusInternalServerError, gin.H{
-// 			"code":    http.StatusInternalServerError,
-// 			"message": err.Error(),
-// 		})
-// 		return
-// 	}
-// 	_, err = query.Exec(beasiswa.Name, beasiswa.Jenjang, beasiswa.Kota, beasiswa.Description, beasiswa.Image, beasiswa.Category_id, beasiswa.Id)
-// 	if err != nil {
-// 		c.JSON(http.StatusInternalServerError, gin.H{
-// 			"code":    http.StatusInternalServerError,
-// 			"message": err.Error(),
-// 		})
-// 		return
-// 	}
-// }

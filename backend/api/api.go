@@ -34,7 +34,7 @@ func NewAPI(userRepo repo.UserRepository, scholarshipRepo repo.ScholarshipsRepos
 	gin.POST("/api/login", api.login)
 	gin.POST("/api/register", api.Register)
 	gin.POST("/api/logout", api.Logout)
-	//gin.PUT("/api/user", api.UpdateUser)
+	gin.PUT("/api/user/:id", api.UpdateUser)
 	gin.DELETE("/api/user/:id", api.DeleteUser)
 	gin.GET("/api/user", api.getUser)
 	gin.GET("/api/user/:id", api.GetById)

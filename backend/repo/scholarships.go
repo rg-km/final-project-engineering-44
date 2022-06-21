@@ -100,20 +100,6 @@ func (s *ScholarshipsRepository) GetByName(name string) ([]Scholarship, error) {
 	return scholarships, nil
 }
 
-// func (s *ScholarshipsRepository) Update(id int) (Scholarship, error) {
-// 	res, err := s.GetById(id)
-// 	if err != nil {
-// 		return res, err
-// 	}
-// 	sqlStatement := `UPDATE scholarship SET name = ?, description = ?, image = ?, jenjang = ?, kota = ? WHERE id = ?;`
-
-// 	_, err = s.db.Exec(sqlStatement, res.Name, res.Description, res.Image, res.Jenjang, res.Kota, id)
-// 	if err != nil {
-// 		return Scholarship{}, err
-// 	}
-// 	return res, nil
-// }
-
 func (s *ScholarshipsRepository) Delete(id int) (Scholarship, error) {
 	res, err := s.GetById(id)
 	if err != nil {
@@ -128,35 +114,12 @@ func (s *ScholarshipsRepository) Delete(id int) (Scholarship, error) {
 	return res, nil
 }
 
-func (s *ScholarshipsRepository) Update(id int) (Scholarship, error) {
-	res, err := s.GetById(id)
-	if err != nil {
-		return res, err
-	}
+func (s *ScholarshipsRepository) Update(id int, beasiswa Scholarship) (Scholarship, error) {
 	sqlStatement := `UPDATE scholarship SET name = ?, description = ?, jenjang = ?, kota = ?, image = ? WHERE id = ?;`
 
-	_, err = s.db.Exec(sqlStatement, res.Name, res.Description, res.Jenjang, res.Kota, res.Image, id)
+	_, err := s.db.Exec(sqlStatement, beasiswa.Name, beasiswa.Description, beasiswa.Jenjang, beasiswa.Kota, beasiswa.Image, id)
 	if err != nil {
 		return Scholarship{}, err
 	}
-	return res, nil
+	return beasiswa, nil
 }
-
-// func (s *ScholarshipsRepository) uploadScholarships(scholarship Scholarship) error {
-// 	sqlStatement := `INSERT INTO scholarship (user_id, name, description, image, jenjang, kota, category_id, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?);`
-
-// 	_, err := s.db.Exec(sqlStatement, scholarship.User_id, scholarship.Name, scholarship.Description, scholarship.Image, scholarship.Jenjang, scholarship.Kota, scholarship.Category_id, scholarship.CreatedAt)
-// 	if err != nil {
-// 		return err
-// 	}
-// 	return nil
-// }
-
-// func (s *ScholarshipsRepository) uploadScholarships(Name string, Jenjang string, Kota string, Description string, Image string) (Scholarship, error) {
-// 	var beasiswa Scholarship
-// 	err := s.db.QueryRow("INSERT INTO scholarship (name, jenjang, kota, description, image) VALUES (?, ?, ?, ?, ?) RETURNING id, name, jenjang, kota, description, image,", Name, Jenjang, Kota, Description, Image).Scan(&beasiswa.Id, &beasiswa.Name, &beasiswa.Jenjang, &beasiswa.Kota, &beasiswa.Description, &Image)
-// 	if err != nil {
-// 		return beasiswa, err
-// 	}
-// 	return beasiswa, nil
-// }
