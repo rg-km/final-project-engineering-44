@@ -26,8 +26,8 @@ const IndexAdmin = () => {
                     activeClassName="active"
                     style={{ textDecoration: "none", color: "inherit" }}>
                         <div className="menu-admin-1">
-
-                        <h3><MdOutlineDashboard className="icon"/> Dashboard</h3>
+                            <MdOutlineDashboard className="icon"/> 
+                            <h3>Dashboard</h3>
                         </div>
                         
                     </NavLink>
