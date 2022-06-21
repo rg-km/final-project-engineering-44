@@ -8,7 +8,11 @@ import Scholarship from "../components/Scholarship/Scholarship";
 import SidebarNews from "../components/SidebarNews/SidebarNews";
 import Beasiswa from "../pages/Beasiswa/Beasiswa";
 import ProfilPage from "../pages/ProfilPage/ProfilPage";
+<<<<<<< HEAD
+import IndexAdmin from "../pages/Index/IndexAdmin";
+=======
 import AboutPage from "../pages/About/About";
+>>>>>>> 5a4b42f4cb719174021ed001a0a4e46e0ad85801
 
 const Pages = () => {
   return (
@@ -22,7 +26,11 @@ const Pages = () => {
         <Route path="/news" element={<SidebarNews />} />
         <Route path="/beasiswa/kota=:kota" element={<Beasiswa />} />
         <Route path="/profil" element={<ProfilPage />} />
+<<<<<<< HEAD
+        <Route path="/index-admin" element={<IndexAdmin />} />
+=======
         <Route path="/about" element={<AboutPage />} />
+>>>>>>> 5a4b42f4cb719174021ed001a0a4e46e0ad85801
       </Routes>
     </div>
   );
