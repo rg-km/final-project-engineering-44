@@ -8,8 +8,6 @@ import Scholarship from "../components/Scholarship/Scholarship";
 import SidebarNews from "../components/SidebarNews/SidebarNews";
 import Beasiswa from "../pages/Beasiswa/Beasiswa";
 import ProfilPage from "../pages/ProfilPage/ProfilPage";
-import IndexAdmin from "../pages/Index/IndexAdmin";
-import IndexUser from "../pages/Index/IndexUser";
 import AboutPage from "../pages/About/About";
 
 const Pages = () => {
@@ -24,8 +22,6 @@ const Pages = () => {
         <Route path="/news" element={<SidebarNews />} />
         <Route path="/beasiswa/kota=:kota" element={<Beasiswa />} />
         <Route path="/profil" element={<ProfilPage />} />
-        <Route path="/index-admin" element={<IndexAdmin />} />
-        <Route path="/index-user" element={<IndexUser />} />
         <Route path="/about" element={<AboutPage />} />
       </Routes>
     </div>
