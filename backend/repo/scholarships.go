@@ -12,6 +12,17 @@ func NewScholarshipsRepository(db *sql.DB) *ScholarshipsRepository {
 	return &ScholarshipsRepository{db: db}
 }
 
+func (s *ScholarshipsRepository) Upload(beasiswa Scholarship) (Scholarship, error) {
+	sqlStatement := `INSERT INTO scholarship (name, jenjang, kota, description, image) VALUES (?, ?, ?, ?, ?);`
+
+	_, err := s.db.Exec(sqlStatement, beasiswa.Name, beasiswa.Jenjang, beasiswa.Kota, beasiswa.Description, beasiswa.Image)
+	if err != nil {
+		return Scholarship{}, err
+
+	}
+	return beasiswa, nil
+}
+
 func (s *ScholarshipsRepository) GetAll() ([]Scholarship, error) {
 	sqlStatement := `SELECT * FROM scholarship;`
 

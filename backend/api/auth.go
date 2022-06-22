@@ -1,7 +1,7 @@
 package api
 
 import (
-	"auth/database"
+	"auth/repo"
 	"encoding/json"
 
 	"net/http"
@@ -90,7 +90,7 @@ func (api *API) login(c *gin.Context) {
 }
 
 func (api *API) Register(c *gin.Context) {
-	var request reqRegister
+	var request repo.User
 
 	err := json.NewDecoder(c.Request.Body).Decode(&request)
 	if err != nil {
@@ -118,19 +118,7 @@ func (api *API) Register(c *gin.Context) {
 		return
 	}
 
-	password, _ := bcrypt.GenerateFromPassword([]byte(request.Password), 10)
-
-	records := `INSERT INTO user (username, password, email, jenjang, kota, role) VALUES (?, ?, ?, ?, ?, ?);`
-	query, err := database.DB.Prepare(records)
-	if err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{
-			"code":    http.StatusInternalServerError,
-			"message": err.Error(),
-		})
-		return
-	}
-
-	_, err = query.Exec(request.Username, string(password), request.Email, request.Jenjang, request.Kota, "user")
+	_, err = api.userRepo.Register(request)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{
 			"code":    http.StatusInternalServerError,

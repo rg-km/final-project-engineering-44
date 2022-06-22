@@ -16,6 +16,18 @@ func NewUserRepository(db *sql.DB) *UserRepository {
 	return &UserRepository{db: db}
 }
 
+func (s *UserRepository) Register(user User) (User, error) {
+	password, _ := bcrypt.GenerateFromPassword([]byte(user.Password), 10)
+	sqlStatement := `INSERT INTO user (username, password, email, jenjang, kota, role) VALUES (?, ?, ?, ?, ?, ?);`
+
+	_, err := s.db.Exec(sqlStatement, user.Username, string(password), user.Email, user.Jenjang, user.Kota, "user")
+	if err != nil {
+		return User{}, err
+
+	}
+	return user, nil
+}
+
 func (u *UserRepository) CheckUser(email string) (*UserResponse, error) {
 	sqlStatement := `SELECT * FROM user WHERE email = ? ;`
 

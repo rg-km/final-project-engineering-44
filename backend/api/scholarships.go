@@ -1,7 +1,6 @@
 package api
 
 import (
-	"auth/database"
 	"auth/repo"
 	"encoding/json"
 
@@ -16,12 +15,12 @@ type ScholarshipsListErrorResponse struct {
 }
 
 type ScholarshipsListSuccessResponse struct {
-	Scholarships []reqScholarship `json:"scholarships"`
+	Scholarships []repo.Scholarship `json:"scholarships"`
 }
 
 // mengapload konten beasiswa
 func (a *API) uploadScholarships(c *gin.Context) {
-	var beasiswa reqScholarship
+	var beasiswa repo.Scholarship
 	err := json.NewDecoder(c.Request.Body).Decode(&beasiswa)
 	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{
@@ -39,24 +38,14 @@ func (a *API) uploadScholarships(c *gin.Context) {
 		return
 	}
 
-	records := `INSERT INTO scholarship (name, jenjang, kota, description, image) VALUES (?, ?, ?, ?, ?);`
-	query, err := database.DB.Prepare(records)
+	_, err = a.scholarshipRepo.Upload(beasiswa)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{
-			"code":    http.StatusInternalServerError,
 			"message": err.Error(),
 		})
 		return
 	}
 
-	_, err = query.Exec(beasiswa.Name, beasiswa.Jenjang, beasiswa.Kota, beasiswa.Description, beasiswa.Image)
-	if err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{
-			"code":    http.StatusInternalServerError,
-			"message": err.Error(),
-		})
-		return
-	}
 	c.JSON(http.StatusOK, gin.H{
 		"code":    http.StatusOK,
 		"message": "Upload Success",
