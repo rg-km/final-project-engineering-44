@@ -2,11 +2,14 @@ import React, { useState } from "react";
 import "./register.css";
 import ImageRegister from "../../assets/register.png";
 import Logo from "../../assets/logo.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { RegisterForm } from "../../components/Form/Form";
 import axios from "axios";
 
 const Register = () => {
+  const navigate = useNavigate();
+
+  const [message, setMessage] = useState("");
   const [data, setData] = useState({
     username: "",
     email: "",
@@ -35,12 +38,19 @@ const Register = () => {
     await axios({
       method: "post",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      url: "http://localhost:8080/api/register",
+      url: "/register",
       data: user,
       withCredentials: true,
     })
-      .then((res) => console.log(res))
-      .catch((e) => console.log(e));
+      .then((res) => {
+        if (res.data.code === 200) {
+          setMessage(res.data.message);
+          navigate("/auth/login");
+        }
+      })
+      .catch((e) => {
+        setMessage(e.response.data.message);
+      });
   };
 
   return (

@@ -4,13 +4,14 @@ import { BsKey } from "react-icons/bs";
 import { AiOutlineUser } from "react-icons/ai";
 import "./form.css";
 
-const LoginForm = ({ handleChange, handleSubmit }) => {
+const LoginForm = ({ handleChange, handleSubmit, initialRef }) => {
   return (
     <div className="form">
       <h2>Login</h2>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
           <input
+            ref={initialRef}
             type="email"
             placeholder="E-mail"
             name="email"
@@ -21,6 +22,7 @@ const LoginForm = ({ handleChange, handleSubmit }) => {
         </div>
         <div className="form-group">
           <input
+            ref={initialRef}
             type="password"
             placeholder="Password"
             name="password"

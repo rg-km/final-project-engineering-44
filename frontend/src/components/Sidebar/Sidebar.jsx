@@ -52,7 +52,7 @@ const Sidebar = () => {
           <img src="https://github.com/dap23.png" alt="" />
           <div className="profile-info">
             <span>Muhammad Daffa</span>
-            <p>Admin</p>
+            <p>admin</p>
           </div>
           <BsThreeDotsVertical className="icon-setting" />
         </div>
