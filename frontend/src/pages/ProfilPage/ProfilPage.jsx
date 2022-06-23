@@ -1,87 +1,67 @@
 import "./profilPage.css";
-import Logo from "../../assets/logo.png";
-import { FcBusinesswoman } from "react-icons/fc";
-import { AiOutlineUser } from "react-icons/ai";
-import { AiOutlineFileText } from "react-icons/ai";
-import { BsKeyFill } from "react-icons/bs";
-import { VscSignIn } from "react-icons/vsc";
 import Footer from "../../components/Footer/Footer";
+import Navbar from "../../components/Navbar/Navbar";
+import userStore from "../../store/userStore";
+import { AiOutlineUser } from "react-icons/ai";
+import { BsKey } from "react-icons/bs";
+import { GoBook } from "react-icons/go";
 
 const ProfilPage = () => {
-    return (
-        <div className="wrapper-profilPage">
-            <div className="header-profilPage">
-                <div className="header-kiri-profilPage">
-                    <h1><img src={Logo} alt="" className="logo-RB"/> Ruang Beasiswa</h1>
-                    <p className="tagLine">Temukan 1001 Beasiswa dalam satu ruang pintar</p>
-                </div>
-                <div className="username">
-                   <p>Hi, John</p> 
-                    <FcBusinesswoman />
-                </div>
-            </div>
-
-            <div className="wrapper-isi-profile">
-                <h1>Profile</h1>
-                <div className="pemisah-profile">
-                    
-                    <div className="pemisah-user">
-                        <div className="user">
-                            <FcBusinesswoman />
-                            <div>
-                                <p><strong>John Doe</strong></p>
-                                <p className="asal-user">Perguruan Tinggi Yogyakarta</p>
-                            </div>
-                        </div>
-                        <div className="pengatran-user">
-                            <div className="pengatran-user-1">
-                                <AiOutlineUser />
-                                <p>Profile</p>
-                            </div>
-                            <div className="pengatran-user-1">
-                                <AiOutlineFileText />
-                                <p>Grades</p>
-                            </div>
-                            <div className="pengatran-user-1">
-                                <BsKeyFill />
-                                <p>Change Password</p> 
-                            </div>
-                            <div className="pengatran-user-1">
-                                <VscSignIn />
-                                <p>Sign Out</p>
-                            </div>                            
-                        </div>
-                    </div>
-                    <div className="isi-profil">
-                        <div>
-                            <p><strong>Nama</strong></p>
-                            <p className="keterangan-isi-profil">John Doe</p>
-                        </div>
-                        <div>
-                            <p><strong>Username</strong></p>
-                            <p className="keterangan-isi-profil">johndoe99</p>
-                        </div>
-                        <div>
-                            <p><strong>Email</strong></p>
-                            <p className="keterangan-isi-profil">johndoe@gmail.com</p>
-                        </div>
-                        <div>
-                            <p><strong>Jenjang</strong></p>
-                            <p className="keterangan-isi-profil">Perguruan Tinggi</p>
-                        </div>
-                        <div>
-                            <p><strong>Domisili</strong></p>
-                            <p className="keterangan-isi-profil">Yogyakarta</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div>
-                <Footer />
-            </div>
+  const user = userStore((state) => state.user);
+  return (
+    <div className="Profile-Page">
+      <Navbar />
+      <div className="profile">
+        <div className="left">
+          <div className="box">
+            <h1>
+              Nama : <strong>{user?.username}</strong>
+            </h1>
+            <p>{user?.role}</p>
+          </div>
+          <div className="box">
+            <ul>
+              <li>
+                <AiOutlineUser className="icon" />
+                <span>Profile</span>
+              </li>
+              <li>
+                <BsKey className="icon" />
+                <span>Change Password</span>
+              </li>
+              <li>
+                <GoBook className="icon" />
+                <span>My Scholarship</span>
+              </li>
+            </ul>
+          </div>
         </div>
-    );
+        <div className="right">
+          <h1>Profile</h1>
+          <div className="box-right">
+            <div className="form-group">
+              <label>Username</label>
+              <input type="text" value={user?.username} />
+            </div>
+            <div className="form-group">
+              <label>Email</label>
+              <input type="email" value={user?.email} />
+            </div>
+            <div className="form-group">
+              <label>Jenjang</label>
+              <input type="text" value={user?.jenjang || "Perguruan Tinggi"} />
+            </div>
+            <div className="form-group">
+              <label>Kota</label>
+              <input type="text" value={user?.kota || "Semarang"} />
+            </div>
+            <button>Update</button>
+          </div>
+        </div>
+      </div>
+      <Footer />
+    </div>
+  );
 };
 
 export default ProfilPage;

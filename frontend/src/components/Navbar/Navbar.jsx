@@ -7,13 +7,16 @@ import axios from "axios";
 
 const Navbar = () => {
   const navigate = useNavigate();
+  const removeUser = userStore((state) => state.removeUser);
   const user = userStore((state) => state.user);
 
   const handleClick = async () => {
     const res = await axios.post("/logout");
     if (res.status === 200) {
-      window.location.reload();
-      navigate("/");
+      removeUser();
+      navigate("/", {
+        replace: true,
+      });
     }
   };
   return (
@@ -27,7 +30,11 @@ const Navbar = () => {
       <div className="menu">
         {user.username ? (
           <>
-            <span>Hi, {user.username}</span>
+            <Link
+              to={`/user/${user?.exp}/profile`}
+              style={{ textDecoration: "none", color: "inherit" }}>
+              <span>Hi, {user.username}</span>
+            </Link>
             <button className="navbar-sign-out" onClick={handleClick}>
               Sign Out
             </button>
