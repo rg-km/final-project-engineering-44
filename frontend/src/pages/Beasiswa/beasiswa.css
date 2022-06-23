@@ -1,0 +1,103 @@
+.wrapper-beasiswa {
+    display: flex;
+    flex-direction: column;
+    margin-left: 40px;
+}
+
+.footer-bea {
+    display: flex;
+    flex-direction: row;
+    gap: 700px;
+    color: #1F4690;
+}
+
+.logo-bea {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.logo-bea img {
+    width: 25px;
+}
+
+.logo-bea p {
+    font-size: 18px;
+    margin-top: -15px;
+}
+
+.user-bea {
+    display: flex;
+    flex-direction: row;
+    align-items:center;
+    justify-content: right;
+    gap: 20px;
+}
+
+.user-bea img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+
+.user-bea button {
+    border: none;
+    border-radius: 8px;
+    padding: 8px;
+    color: white;
+    background-color: #1f4690;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.wrapper-bea {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.konten-bea {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    margin-right: 250px;
+}
+
+.konten-bea img {
+    width: 250px;
+    border: none;
+    border-radius: 8px;
+}
+
+.desc-bea {
+    display: flex;
+    flex-direction: column;
+}
+
+.desc-bea p {
+    text-align: justify;
+    margin-top: -10px;
+}
+
+.judul-bea {
+    display: flex;
+    flex-direction: row;
+    gap: 100px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.desc-bea button {
+    border: none;
+    border-radius: 8px;
+    padding: 8px;
+    color: white;
+    background-color: #1f4690;
+    cursor: pointer;
+    font-weight: bold;
+    width: 100px;
+}
+
+
+
