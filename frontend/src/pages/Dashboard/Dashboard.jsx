@@ -3,8 +3,11 @@ import Sidebar from "../../components/Sidebar/Sidebar";
 import "./dashboard.css";
 import { FiFilter } from "react-icons/fi";
 import Table from "../../components/Table/Table";
+import userStore from "../../store/userStore";
 
 const Dashboard = () => {
+  const user = userStore((state) => state);
+  console.log(user);
   return (
     <div className="dashboard">
       <Sidebar />
