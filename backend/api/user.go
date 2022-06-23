@@ -131,3 +131,19 @@ func (a *API) UpdateUser(c *gin.Context) {
 		"data":    data,
 	})
 }
+
+func (a *API) DeleteUserFromEmail(c *gin.Context) {
+	email := c.Param("email")
+
+	err := a.userRepo.DeleteUserFromEmail(email)
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{
+			"message": err.Error(),
+		})
+		return
+	}
+
+	c.JSON(http.StatusOK, gin.H{
+		"message": "user berhasil dihapus",
+	})
+}

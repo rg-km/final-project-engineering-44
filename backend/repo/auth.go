@@ -1,7 +1,6 @@
 package repo
 
 import (
-	"auth/database"
 	"database/sql"
 	"fmt"
 
@@ -50,7 +49,8 @@ func (u *UserRepository) CheckUser(email string) (*UserResponse, error) {
 func (u *UserRepository) CheckUserRegis(value string) (*User, error) {
 	sqlStatement := `SELECT * FROM user WHERE email = ?;`
 
-	rows, err := database.DB.Query(sqlStatement, value)
+	// rows, err := database.DB.Query(sqlStatement, value) <- sebelumnya
+	rows, err := u.db.Query(sqlStatement, value)
 	fmt.Println(rows, err)
 	if err != nil {
 		return nil, err
@@ -63,7 +63,6 @@ func (u *UserRepository) CheckUserRegis(value string) (*User, error) {
 			return nil, err
 		}
 	}
-
 	return &user, nil
 }
 
@@ -144,6 +143,17 @@ func (u *UserRepository) Delete(id int) error {
 	sqlStatement := `DELETE FROM user WHERE id = ?;`
 
 	_, err := u.db.Exec(sqlStatement, id)
+	if err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (u *UserRepository) DeleteUserFromEmail(email string) error {
+	sqlStatement := `DELETE FROM user WHERE email = ?;`
+
+	_, err := u.db.Exec(sqlStatement, email)
 	if err != nil {
 		return err
 	}

@@ -46,6 +46,8 @@ func NewAPI(userRepo repo.UserRepository, scholarshipRepo repo.ScholarshipsRepos
 	gin.POST("/api/scholarships/upload", api.uploadScholarships)
 	gin.PUT("/api/scholarships/:id", api.Updatebeasiswa)
 	gin.DELETE("/api/scholarships/:id", api.DeleteScholarships)
+	//Delete User untuk testing
+	gin.DELETE("/deleteUser/:email", api.DeleteUserFromEmail)
 
 	return api
 }

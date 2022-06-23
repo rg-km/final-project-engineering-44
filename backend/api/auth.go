@@ -109,8 +109,8 @@ func (api *API) Register(c *gin.Context) {
 		return
 	}
 
-	_, err = api.userRepo.CheckUserRegis(request.Email)
-	if err != nil {
+	cek, _ := api.userRepo.CheckUserRegis(request.Email)
+	if cek.Id != 0 {
 		c.JSON(http.StatusInternalServerError, gin.H{
 			"code":    http.StatusInternalServerError,
 			"message": "Email sudah terdaftar",
