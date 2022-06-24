@@ -28,13 +28,13 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const user = {
+      email: data.email,
+      password: data.password,
+    };
     try {
-      const user = {
-        email: data.email,
-        password: data.password,
-      };
       const res = await axios({
-        method: "post",
+        method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         url: "/login",
         data: user,
@@ -48,9 +48,7 @@ const Login = () => {
         });
       }
     } catch (error) {
-      if (error.response.status === 401) {
-        setMessage("Wrong Credentials!");
-      }
+      setMessage(error.message);
     }
 
     firstRef.current.value = "";

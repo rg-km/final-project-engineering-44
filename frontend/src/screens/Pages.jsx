@@ -12,7 +12,7 @@ const Pages = () => {
   return (
     <div>
       <Routes>
-        <Route path="/" index element={<LandingPage />} />
+        <Route index element={<LandingPage />} />
         <Route path="/auth/login" element={<Login />} />
         <Route path="/auth/register" element={<Register />} />
         <Route path="/dashboard" element={<Dashboard />} />
@@ -25,3 +25,20 @@ const Pages = () => {
 };
 
 export default Pages;
+
+// [
+//   {
+//     path: "/admin",
+//     element: user ? <Dashboard /> : <Navigate to="/login" />,
+//     children: [{ path: "/scholarship", element: <Beasiswa /> }],
+//   },
+//   {
+//     path: "/",
+//     element: <LandingPage />,
+//     children: [
+//       { path: "/about", element: <AboutPage /> },
+//       { path: "/login", element: <Login /> },
+//       { path: "/register", element: <Register /> },
+//     ],
+//   },
+// ];

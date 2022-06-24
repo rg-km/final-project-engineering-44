@@ -4,11 +4,12 @@ import Logo from "../../assets/logo.png";
 import { Link, useNavigate } from "react-router-dom";
 import userStore from "../../store/userStore";
 import axios from "axios";
+import useAuth from "../../hooks/useAuth";
 
 const Navbar = () => {
   const navigate = useNavigate();
   const removeUser = userStore((state) => state.removeUser);
-  const user = userStore((state) => state.user);
+  const user = useAuth();
 
   const handleClick = async () => {
     const res = await axios.post("/logout");

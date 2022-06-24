@@ -9,9 +9,10 @@ import { FaSignOutAlt } from "react-icons/fa";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import userStore from "../../store/userStore";
 import axios from "axios";
+import useAuth from "../../hooks/useAuth";
 
 const Sidebar = () => {
-  const user = userStore((state) => state.user);
+  const user = useAuth();
   const navigate = useNavigate();
   const removeUser = userStore((state) => state.removeUser);
 
