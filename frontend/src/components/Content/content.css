@@ -2,7 +2,7 @@
     flex: 4;
 }
 
-.top {
+.content .top {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -12,21 +12,21 @@
     border-bottom: 1px solid;
 }
 
-.top .dashboard-header h1 {
+.content .top .dashboard-header h1 {
     margin: 0;
 }
 
-.top .dashboard-header p {
+.content .top .dashboard-header p {
     margin: 0;
 }
 
-.top .search-and-button {
+.content .top .search-and-button {
     display: flex;
     align-items: center;
     gap: 20px;
 }
 
-.top .search-and-button input {
+.content .top .search-and-button input {
     width: 200px;
     height: 30px;
     padding-left: 15px;
@@ -36,11 +36,11 @@
     border: none;
 }
 
-.top .search-and-button input::placeholder {
+.content .top .search-and-button input::placeholder {
     color: #888888;
 }
 
-.top .search-and-button button {
+.content .top .search-and-button button {
     height: 30px;
     border: none;
     background-color: #F2F2F2;
@@ -49,7 +49,7 @@
     border-radius: 6px;
 }
 
-.bottom {
+.content .bottom {
     padding: 30px;
     display: flex;
     flex-direction: column;
@@ -57,13 +57,13 @@
     gap: 10px;
 }
 
-.bottom .button {
+.content .bottom .button {
     display: flex;
     align-items: center;
     justify-content: end;
 }
 
-.bottom .button .add-scholarship {
+.content .bottom .button .add-scholarship {
     width: 200px;
     height: 40px;
     border: none;

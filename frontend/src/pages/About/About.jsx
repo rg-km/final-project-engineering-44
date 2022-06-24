@@ -1,75 +1,18 @@
 import BigLogo from "../../assets/logo-besar.png";
 import ImageAboutPage from "../../assets/logoAbout.png";
-import LogoTopLeft from "../../assets/logo-lengkap.png";
 import LogoLeft from "../../assets/logo-landing-left.png";
 import LogoRight from "../../assets/logo-landing-right.png";
 import LogoLPDP from "../../assets/logo-lpdp.png";
 import LogoDjarum from "../../assets/logo-djarum-beasiswa.png";
 import LogoRG from "../../assets/logo-ruang-guru.png";
 import "./about.css";
-import { Link } from "react-router-dom";
+import Navbar from "../../components/Navbar/Navbar";
 import Footer from "../../components/Footer/Footer";
-import { useState } from "react";
 
 const About = () => {
-  const [user, setUser] = useState({
-    name: "",
-    image: "",
-    isUser: false,
-  });
-
-  const handleSignIn = () => {
-    setUser({
-      name: "John",
-      image: "https://i.pravatar.cc/",
-      isUser: true,
-    });
-  };
-
-  const handleSignOut = () => {
-    setUser({
-      isUser: false,
-    });
-  };
-
   return (
     <div className="about">
-      <div className="img-top-left">
-        <Link to="/" className="link">
-          <img src={LogoTopLeft} alt="" className="size-logo" />
-        </Link>
-      </div>
-      <div className="wrapper-top-right">
-        <div className="top-right-button">
-          {user.isUser ? (
-            <>
-              <div className="profile">
-                <h3>Hi, {user.name}</h3>
-                <img src={user.image} alt="profile user" />
-              </div>
-              <Link to="/about" className="link">
-                <button className="button-SignOut" onClick={handleSignOut}>
-                  Sign Out
-                </button>
-              </Link>
-            </>
-          ) : (
-            <>
-              <button className="button-SignIn" onClick={handleSignIn}>
-                Sign In
-              </button>
-              {/* <Link to="/auth/login" className="link">
-                  <button className="top-button-SignIn" onClick={handleSignIn}>
-                    Sign In
-                  </button>
-                </Link> */}
-              <Link to="/auth/register" className="link">
-                <button className="button-SignUp">Sign Up</button>
-              </Link>
-            </>
-          )}
-        </div>
-      </div>
+      <Navbar />
       <h1 className="title">About Us</h1>
       <div className="wrapper-up">
         <div>
