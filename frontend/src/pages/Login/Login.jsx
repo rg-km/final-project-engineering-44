@@ -11,7 +11,8 @@ import userStore from "../../store/userStore";
 const Login = () => {
   const setUser = userStore((state) => state.setUser);
   const navigate = useNavigate();
-  const initialRef = useRef(null);
+  const firstRef = useRef(null);
+  const secondRef = useRef(null);
 
   const [data, setData] = useState({
     email: null,
@@ -47,10 +48,13 @@ const Login = () => {
         });
       }
     } catch (error) {
-      setMessage(error.message);
+      if (error.response.status === 401) {
+        setMessage("Wrong Credentials!");
+      }
     }
 
-    initialRef.current.value = "";
+    firstRef.current.value = "";
+    secondRef.current.value = "";
   };
 
   return (
@@ -79,7 +83,8 @@ const Login = () => {
             ""
           )}
           <LoginForm
-            initialRef={initialRef}
+            firstRef={firstRef}
+            secondRef={secondRef}
             handleChange={handleChange}
             handleSubmit={handleSubmit}
           />

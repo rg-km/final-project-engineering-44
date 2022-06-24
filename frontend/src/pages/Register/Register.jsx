@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import "./register.css";
 import ImageRegister from "../../assets/register.png";
 import Logo from "../../assets/logo.png";
@@ -8,6 +8,7 @@ import axios from "axios";
 
 const Register = () => {
   const navigate = useNavigate();
+  const initialRef = useRef();
 
   const [message, setMessage] = useState("");
   const [data, setData] = useState({
@@ -46,11 +47,15 @@ const Register = () => {
         if (res.data.code === 200) {
           setMessage(res.data.message);
           navigate("/auth/login");
+        } else {
+          setMessage(res.data.message);
         }
       })
       .catch((e) => {
         setMessage(e.response.data.message);
       });
+
+    initialRef.current.value = "";
   };
 
   return (
@@ -72,6 +77,9 @@ const Register = () => {
             </Link>
           </div>
           <RegisterForm
+            initialRef={initialRef}
+            message={message}
+            setMessage={setMessage}
             handleChange={handleChange}
             handleSubmit={handleSubmit}
             data={data}
