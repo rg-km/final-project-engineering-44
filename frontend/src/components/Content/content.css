@@ -1,12 +1,8 @@
-.dashboard {
-    display: flex;
-}
-
-.dashboard .content {
+.content {
     flex: 4;
 }
 
-.dashboard .top {
+.content .top {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -16,21 +12,21 @@
     border-bottom: 1px solid;
 }
 
-.dashboard .top .dashboard-header h1 {
+.content .top .dashboard-header h1 {
     margin: 0;
 }
 
-.dashboard .top .dashboard-header p {
+.content .top .dashboard-header p {
     margin: 0;
 }
 
-.dashboard .top .search-and-button {
+.content .top .search-and-button {
     display: flex;
     align-items: center;
     gap: 20px;
 }
 
-.dashboard .top .search-and-button input {
+.content .top .search-and-button input {
     width: 200px;
     height: 30px;
     padding-left: 15px;
@@ -40,11 +36,11 @@
     border: none;
 }
 
-.dashboard .top .search-and-button input::placeholder {
+.content .top .search-and-button input::placeholder {
     color: #888888;
 }
 
-.dashboard .top .search-and-button button {
+.content .top .search-and-button button {
     height: 30px;
     border: none;
     background-color: #F2F2F2;
@@ -53,8 +49,28 @@
     border-radius: 6px;
 }
 
-.dashboard .bottom {
+.content .bottom {
     padding: 30px;
     display: flex;
     flex-direction: column;
+    width: 100%;
+    gap: 10px;
+}
+
+.content .bottom .button {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+
+.content .bottom .button .add-scholarship {
+    width: 200px;
+    height: 40px;
+    border: none;
+    background-color: #1F4690;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 10px;
+    cursor: pointer;
 }

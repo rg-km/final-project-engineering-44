@@ -24,7 +24,7 @@ const Hero = () => {
         <div className="bottom">
           <BsPerson />
           <p>
-            <strong>1000</strong> user dengan tingkat keberhasilan{" "}
+            <strong>1000</strong> user dengan tingkat keberhasilan
             <strong>90%</strong>
           </p>
         </div>

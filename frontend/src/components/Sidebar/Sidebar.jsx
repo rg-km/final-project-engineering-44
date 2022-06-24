@@ -6,9 +6,24 @@ import { FiBookOpen } from "react-icons/fi";
 import { BsNewspaper, BsThreeDotsVertical } from "react-icons/bs";
 import { FaSignOutAlt } from "react-icons/fa";
 
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
+import userStore from "../../store/userStore";
+import axios from "axios";
 
 const Sidebar = () => {
+  const user = userStore((state) => state.user);
+  const navigate = useNavigate();
+  const removeUser = userStore((state) => state.removeUser);
+
+  const handleClick = async () => {
+    const res = await axios.post("/logout");
+    if (res.status === 200) {
+      removeUser();
+      navigate("/", {
+        replace: true,
+      });
+    }
+  };
   return (
     <div className="sidebar">
       <div className="logo">
@@ -49,15 +64,15 @@ const Sidebar = () => {
       </div>
       <div className="setting">
         <div className="profile-setting">
-          <img src="https://github.com/dap23.png" alt="" />
+          <img src={user?.image || "https://github.com/dap23.png"} alt="" />
           <div className="profile-info">
-            <span>Muhammad Daffa</span>
-            <p>admin</p>
+            <span>{user?.username}</span>
+            <p>{user?.role}</p>
           </div>
           <BsThreeDotsVertical className="icon-setting" />
         </div>
         <div className="sign-out">
-          <button>
+          <button onClick={handleClick}>
             <FaSignOutAlt />
             Sign Out
           </button>

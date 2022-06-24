@@ -4,14 +4,14 @@ import { BsKey } from "react-icons/bs";
 import { AiOutlineUser } from "react-icons/ai";
 import "./form.css";
 
-const LoginForm = ({ handleChange, handleSubmit, initialRef }) => {
+const LoginForm = ({ handleChange, handleSubmit, firstRef, secondRef }) => {
   return (
     <div className="form">
       <h2>Login</h2>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
           <input
-            ref={initialRef}
+            ref={firstRef}
             type="email"
             placeholder="E-mail"
             name="email"
@@ -22,7 +22,7 @@ const LoginForm = ({ handleChange, handleSubmit, initialRef }) => {
         </div>
         <div className="form-group">
           <input
-            ref={initialRef}
+            ref={secondRef}
             type="password"
             placeholder="Password"
             name="password"
@@ -42,12 +42,20 @@ const LoginForm = ({ handleChange, handleSubmit, initialRef }) => {
   );
 };
 
-const RegisterForm = ({ handleChange, handleSubmit, data }) => {
+const RegisterForm = ({
+  handleChange,
+  handleSubmit,
+  data,
+  message,
+  setMessage,
+  initialRef,
+}) => {
   const [page, setPage] = useState(0);
   const title = ["Register", "Personal Info"];
   const slideOne = () => {
     return (
       <>
+        {message ? message : ""}
         <div className="form-group">
           <input
             type="email"
@@ -55,6 +63,7 @@ const RegisterForm = ({ handleChange, handleSubmit, data }) => {
             name="email"
             onChange={handleChange}
             value={data.email}
+            initialRef={initialRef}
             required
           />
           <HiOutlineMail className="icon" />
@@ -67,11 +76,13 @@ const RegisterForm = ({ handleChange, handleSubmit, data }) => {
             name="username"
             onChange={handleChange}
             value={data.username}
+            initialRef={initialRef}
             required
           />
           <AiOutlineUser className="icon" />
         </div>
-
+        {data.password.length < 2 &&
+          setMessage("Password must be longer than 5 digit")}
         <div className="form-group">
           <input
             type="password"
@@ -79,6 +90,7 @@ const RegisterForm = ({ handleChange, handleSubmit, data }) => {
             name="password"
             onChange={handleChange}
             value={data.password}
+            initialRef={initialRef}
             required
           />
           <BsKey className="icon" />
@@ -90,6 +102,7 @@ const RegisterForm = ({ handleChange, handleSubmit, data }) => {
   const slideTwo = () => {
     return (
       <form onSubmit={handleSubmit}>
+        {message ? message : ""}
         <div className="form-group">
           <input
             type="text"
@@ -97,6 +110,7 @@ const RegisterForm = ({ handleChange, handleSubmit, data }) => {
             name="jenjang"
             onChange={handleChange}
             value={data.jenjang}
+            initialRef={initialRef}
             required
           />
           <HiOutlineMail className="icon" />
@@ -109,6 +123,7 @@ const RegisterForm = ({ handleChange, handleSubmit, data }) => {
             name="domisili"
             onChange={handleChange}
             value={data.domisili}
+            initialRef={initialRef}
             required
           />
           <AiOutlineUser className="icon" />

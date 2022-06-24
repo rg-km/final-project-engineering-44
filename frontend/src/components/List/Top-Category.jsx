@@ -1,17 +1,18 @@
 import "./top-category.css";
+import { Link } from "react-router-dom";
 
 const TopCategory = () => {
   return (
     <div className="pilihan-beasiswa">
       <div>
         <p>
-          <a href="/beasiswa">Beasiswa Daerah</a>
+          <Link to={"/beasiswa"}>Beasiswa Daerah</Link>
         </p>
         <p>
-          <a href="/beasiswa">Beasiswa Provinsi</a>
+          <Link to={"/beasiswa"}>Beasiswa Provinsi</Link>
         </p>
         <p>
-          <a href="/beasiswa">Beasiswa Nasional</a>
+          <Link to={"/beasiswa"}>Beasiswa Nasional</Link>
         </p>
       </div>
     </div>

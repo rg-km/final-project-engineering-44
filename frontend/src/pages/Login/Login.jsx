@@ -6,10 +6,13 @@ import ImageLogin from "../../assets/login.png";
 import { Link } from "react-router-dom";
 import { LoginForm } from "../../components/Form/Form";
 import axios from "axios";
+import userStore from "../../store/userStore";
 
 const Login = () => {
+  const setUser = userStore((state) => state.setUser);
   const navigate = useNavigate();
-  const initialRef = useRef(null);
+  const firstRef = useRef(null);
+  const secondRef = useRef(null);
 
   const [data, setData] = useState({
     email: null,
@@ -25,29 +28,33 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const user = {
-      email: data.email,
-      password: data.password,
-    };
-    await axios({
-      method: "post",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      url: "/login",
-      data: user,
-      withCredentials: true,
-    })
-      .then((res) => {
-        if (res.data.code === 200) {
-          setMessage(res.data.message);
-          navigate("/");
-        }
-      })
-      .catch((e) => {
-        console.log(e.response.data);
-        setMessage(e.response.data.message);
+    try {
+      const user = {
+        email: data.email,
+        password: data.password,
+      };
+      const res = await axios({
+        method: "post",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        url: "/login",
+        data: user,
+        withCredentials: true,
       });
+      if (res.status === 200) {
+        setUser();
+        setMessage(res.data.message);
+        navigate("/", {
+          replace: true,
+        });
+      }
+    } catch (error) {
+      if (error.response.status === 401) {
+        setMessage("Wrong Credentials!");
+      }
+    }
 
-    initialRef.current.value = "";
+    firstRef.current.value = "";
+    secondRef.current.value = "";
   };
 
   return (
@@ -76,7 +83,8 @@ const Login = () => {
             ""
           )}
           <LoginForm
-            initialRef={initialRef}
+            firstRef={firstRef}
+            secondRef={secondRef}
             handleChange={handleChange}
             handleSubmit={handleSubmit}
           />
