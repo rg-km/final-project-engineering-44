@@ -77,7 +77,6 @@ const Register = () => {
             </Link>
           </div>
           <RegisterForm
-            initialRef={initialRef}
             message={message}
             setMessage={setMessage}
             handleChange={handleChange}

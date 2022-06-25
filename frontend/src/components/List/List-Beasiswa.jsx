@@ -37,21 +37,6 @@ const ListBeasiswa = () => {
       name: "Beasiswa Karawang",
     },
   ];
-  const { setBeasiswa } = scholarStore((state) => state.setBeasiswa);
-
-  const fetchData = async () => {
-    try {
-      const res = await axios({
-        method: "get",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        url: "/scholarships",
-        withCredentials: true,
-      });
-      console.log(res);
-    } catch (error) {
-      console.log(error);
-    }
-  };
 
   return (
     <div className="list-beasiswa">

@@ -35,7 +35,7 @@ const Sidebar = () => {
       <div className="menu">
         <ul>
           <NavLink
-            to="/dashboard"
+            to="/admin/dashboard"
             activeClassName="active"
             style={{ textDecoration: "none", color: "inherit" }}>
             <li>
@@ -44,7 +44,7 @@ const Sidebar = () => {
             </li>
           </NavLink>
           <NavLink
-            to="/scholarship"
+            to="/admin/scholarship"
             activeClassName="active"
             style={{ textDecoration: "none", color: "inherit" }}>
             <li>
@@ -53,7 +53,7 @@ const Sidebar = () => {
             </li>
           </NavLink>
           <NavLink
-            to="/news"
+            to="/admin/news"
             activeClassName="active"
             style={{ textDecoration: "none", color: "inherit" }}>
             <li>

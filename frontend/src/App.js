@@ -1,5 +1,5 @@
 import "./App.css";
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, useParams } from "react-router-dom";
 import { Routes, Route } from "react-router-dom";
 import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
@@ -16,6 +16,7 @@ import AuthRoute from "./screens/AuthRoute";
 import PrivateRoute from "./screens/PrivateRoute";
 
 function App() {
+  // const { kota } = useParams();
   return (
     <Routes>
       <Route path="/">
@@ -34,10 +35,10 @@ function App() {
         <Route path=":id" element={<ProfilPage />} />
       </Route>
       <Route path="scholarship" element={<Pages />}>
-        <Route path="kota" element={<Beasiswa />} />
-        <Route path="daerah" element={<Beasiswa />} />
-        <Route path="nasional" element={<Beasiswa />} />
-        <Route path=":id" element={<Single />} />
+        <Route path=":kota" element={<Beasiswa />} />
+        <Route path=":kota" element={<Beasiswa />} />
+        <Route path=":kota" element={<Beasiswa />} />
+        <Route path="single/:id" element={<Single />} />
       </Route>
       <Route path="admin" element={<ProtectedRoute />}>
         <Route path="dashboard" element={<Dashboard />} />

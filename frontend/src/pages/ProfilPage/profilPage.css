@@ -60,12 +60,12 @@ li {
 
 .profile .left .box {
     width: 300px;
-    height: 80px;
+    height: 90px;
     background-color: #1F4690;
     display: flex;
     justify-content: center;
     flex-direction: column;
-    padding: 1em;
+    padding: 2em;
     border-radius: 10px;
     color: #fff;
 }
@@ -84,8 +84,15 @@ li {
     margin-bottom: 10px;
 }
 
+.profile .left .box .info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
 .profile .left .box p {
     margin: 0;
+    font-size: 14px;
 }
 
 .profile .right {

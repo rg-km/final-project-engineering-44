@@ -2,70 +2,38 @@ import React from "react";
 import "./beasiswa.css";
 import beasiswaPPG from "../../assets/beasiswa-PPG.jpeg";
 import Navbar from "../../components/Navbar/Navbar";
+import scholarStore from "../../store/scholarStore";
+import Moment from "moment";
+import { useParams } from "react-router-dom";
 
 const Beasiswa = () => {
+  const beasiswa = scholarStore((state) => state.beasiswa);
+
+  const { kota } = useParams();
+
   return (
     <div className="wrapper-beasiswa">
       <Navbar />
       <div className="wrapper-bea">
-        <h1>Beasiswa Daerah</h1>
-        <div className="konten-bea">
-          <img src={beasiswaPPG} alt="" />
-          <div className="desc-bea">
-            <div className="judul-bea">
-              <h3>Beasiswa Kemdikbud</h3>
-              <p>17/06/22</p>
+        <h1>Beasiswa {kota}</h1>
+        {beasiswa.map((data, index) => {
+          Moment.locale("id");
+          const date = data.created_at;
+          const format = Moment(date).format("DD-MM-YYYY");
+          return (
+            <div className="konten-bea" key={index}>
+              <img src={beasiswaPPG} alt="" />
+              <div className="desc-bea">
+                <div className="judul-bea">
+                  <h3>{data.name}</h3>
+                  <p>{format}</p>
+                </div>
+                <p>{data.description}</p>
+                <button>Daftar</button>
+              </div>
             </div>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </p>
-            <button>Daftar</button>
-          </div>
-        </div>
-        <div className="konten-bea">
-          <img src={beasiswaPPG} alt="" />
-          <div className="desc-bea">
-            <div className="judul-bea">
-              <h3>Beasiswa Kemdikbud</h3>
-              <p>17/06/22</p>
-            </div>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </p>
-            <button>Daftar</button>
-          </div>
-        </div>
-        <div className="konten-bea">
-          <img src={beasiswaPPG} alt="" />
-          <div className="desc-bea">
-            <div className="judul-bea">
-              <h3>Beasiswa Kemdikbud</h3>
-              <p>17/06/22</p>
-            </div>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </p>
-            <button>Daftar</button>
-          </div>
-        </div>
+          );
+        })}
       </div>
     </div>
   );

@@ -4,7 +4,7 @@ import Dashboard from "../pages/Dashboard/Dashboard";
 
 const ProtectedRoute = () => {
   const user = useAuth();
-  const isAllow = user.role === "admin";
+  const isAllow = user.role === "user";
 
   return isAllow ? <Dashboard /> : <Navigate to="/" />;
 };

@@ -7,9 +7,11 @@ import { BsKey } from "react-icons/bs";
 import { GoBook } from "react-icons/go";
 import { useState } from "react";
 import axios from "axios";
+import { useParams } from "react-router-dom";
 
 const ProfilPage = () => {
   const user = userStore((state) => state.user);
+  const { id } = useParams();
 
   const [data, setData] = useState({
     email: user?.email,
@@ -37,7 +39,7 @@ const ProfilPage = () => {
       const res = await axios({
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        url: "/user/",
+        url: `/user/${id}`,
         withCredentials: true,
         data: user,
       });
@@ -54,7 +56,10 @@ const ProfilPage = () => {
             <h1>
               Nama : <strong>{user?.username}</strong>
             </h1>
-            <p>{user?.role}</p>
+            <div className="info">
+              <p>{user?.jenjang}</p>
+              <p>{user?.kota}</p>
+            </div>
           </div>
           <div className="box">
             <ul>

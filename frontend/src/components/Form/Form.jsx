@@ -48,7 +48,6 @@ const RegisterForm = ({
   data,
   message,
   setMessage,
-  initialRef,
 }) => {
   const [page, setPage] = useState(0);
   const title = ["Register", "Personal Info"];
@@ -63,7 +62,6 @@ const RegisterForm = ({
             name="email"
             onChange={handleChange}
             value={data.email}
-            initialRef={initialRef}
             required
           />
           <HiOutlineMail className="icon" />
@@ -76,7 +74,6 @@ const RegisterForm = ({
             name="username"
             onChange={handleChange}
             value={data.username}
-            initialRef={initialRef}
             required
           />
           <AiOutlineUser className="icon" />
@@ -90,7 +87,6 @@ const RegisterForm = ({
             name="password"
             onChange={handleChange}
             value={data.password}
-            initialRef={initialRef}
             required
           />
           <BsKey className="icon" />
@@ -110,7 +106,6 @@ const RegisterForm = ({
             name="jenjang"
             onChange={handleChange}
             value={data.jenjang}
-            initialRef={initialRef}
             required
           />
           <HiOutlineMail className="icon" />
@@ -123,7 +118,6 @@ const RegisterForm = ({
             name="domisili"
             onChange={handleChange}
             value={data.domisili}
-            initialRef={initialRef}
             required
           />
           <AiOutlineUser className="icon" />
