@@ -37,17 +37,15 @@ func CreateTableDatabse(db *sql.DB) (string, error) {
 
 	CREATE TABLE IF NOT EXISTS scholarship (
 		Id INTEGER PRIMARY KEY AUTOINCREMENT,
-		User_id INTEGER,
 		Name VARCHAR(255) NOT NULL,
 		Jenjang VARCHAR NOT NULL,
 		Kota VARCHAR NOT NULL,
 		Description TEXT NOT NULL,
 		Image VARCHAR DEFAULT 'image.jpg',
-		Created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-		FOREIGN KEY (User_id) REFERENCES user (id)
+		Created_at DATETIME DEFAULT CURRENT_TIMESTAMP
 		);
-	INSERT INTO scholarship (User_id, Name, Jenjang, Kota, Description, Image) VALUES (1, 'SMPN 1', 'SMP', 'Jakarta', 'SMPN 1 adalah sekolah menengah pertama di Jakarta', 'image.jpg'),
-	(2, 'SMAN 1', 'SMA', 'Jakarta', 'SMPN 1 adalah sekolah menengah pertama di Jakarta', 'image.jpg');
+	INSERT INTO scholarship (Name, Jenjang, Kota, Description, Image) VALUES ('SMPN 1', 'SMP', 'Jakarta', 'SMPN 1 adalah sekolah menengah pertama di Jakarta', 'image.jpg'),
+	('SMAN 1', 'SMA', 'Jakarta', 'SMPN 1 adalah sekolah menengah pertama di Jakarta', 'image.jpg');
 	
 	CREATE TABLE IF NOT EXISTS comments (
 		Id INTEGER PRIMARY KEY AUTOINCREMENT,

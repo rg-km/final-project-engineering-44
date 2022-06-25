@@ -64,6 +64,8 @@ func (api *API) login(c *gin.Context) {
 	claims := &Claims{
 		Email:    data.Email,
 		Username: data.Username,
+		Jenjang:  data.Jenjang,
+		Kota:     data.Kota,
 		Role:     data.Role,
 		StandardClaims: jwt.StandardClaims{
 			ExpiresAt: expirationTime.Unix(),
@@ -101,10 +103,10 @@ func (api *API) Register(c *gin.Context) {
 		return
 	}
 
-	if request.Username == "" || request.Password == "" || request.Email == "" {
+	if request.Username == "" || request.Password == "" || request.Email == "" || request.Jenjang == "" || request.Kota == "" {
 		c.JSON(http.StatusUnauthorized, gin.H{
 			"code":    http.StatusUnauthorized,
-			"message": "username dan password tidak boleh kosong",
+			"message": "data tidak boleh kosong",
 		})
 		return
 	}

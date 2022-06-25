@@ -33,7 +33,7 @@ func (s *ScholarshipsRepository) GetAll() ([]Scholarship, error) {
 	var scholarships []Scholarship
 	for rows.Next() {
 		var scholarship Scholarship
-		err = rows.Scan(&scholarship.Id, &scholarship.User_id, &scholarship.Name, &scholarship.Jenjang, &scholarship.Kota, &scholarship.Description, &scholarship.Image, &scholarship.CreatedAt)
+		err = rows.Scan(&scholarship.Id, &scholarship.Name, &scholarship.Jenjang, &scholarship.Kota, &scholarship.Description, &scholarship.Image, &scholarship.CreatedAt)
 		if err != nil {
 			return nil, err
 		}
@@ -47,7 +47,7 @@ func (s *ScholarshipsRepository) GetById(id int) (Scholarship, error) {
 
 	row := s.db.QueryRow(sqlStatement, id)
 	var scholarship Scholarship
-	err := row.Scan(&scholarship.Id, &scholarship.User_id, &scholarship.Name, &scholarship.Jenjang, &scholarship.Kota, &scholarship.Description, &scholarship.Image, &scholarship.CreatedAt)
+	err := row.Scan(&scholarship.Id, &scholarship.Name, &scholarship.Jenjang, &scholarship.Kota, &scholarship.Description, &scholarship.Image, &scholarship.CreatedAt)
 	if err != nil {
 		return scholarship, err
 	}
@@ -64,7 +64,7 @@ func (s *ScholarshipsRepository) GetByJenjang(jenjang string) ([]Scholarship, er
 	var scholarships []Scholarship
 	for rows.Next() {
 		var scholarship Scholarship
-		err = rows.Scan(&scholarship.Id, &scholarship.User_id, &scholarship.Name, &scholarship.Jenjang, &scholarship.Kota, &scholarship.Description, &scholarship.Image, &scholarship.CreatedAt)
+		err = rows.Scan(&scholarship.Id, &scholarship.Name, &scholarship.Jenjang, &scholarship.Kota, &scholarship.Description, &scholarship.Image, &scholarship.CreatedAt)
 		if err != nil {
 			return nil, err
 		}
@@ -83,7 +83,7 @@ func (s *ScholarshipsRepository) GetByKota(kota string) ([]Scholarship, error) {
 	var scholarships []Scholarship
 	for rows.Next() {
 		var scholarship Scholarship
-		err = rows.Scan(&scholarship.Id, &scholarship.User_id, &scholarship.Name, &scholarship.Jenjang, &scholarship.Kota, &scholarship.Description, &scholarship.Image, &scholarship.CreatedAt)
+		err = rows.Scan(&scholarship.Id, &scholarship.Name, &scholarship.Jenjang, &scholarship.Kota, &scholarship.Description, &scholarship.Image, &scholarship.CreatedAt)
 		if err != nil {
 			return nil, err
 		}
@@ -102,7 +102,7 @@ func (s *ScholarshipsRepository) GetByName(name string) ([]Scholarship, error) {
 	var scholarships []Scholarship
 	for rows.Next() {
 		var scholarship Scholarship
-		err = rows.Scan(&scholarship.Id, &scholarship.User_id, &scholarship.Name, &scholarship.Jenjang, &scholarship.Kota, &scholarship.Description, &scholarship.Image, &scholarship.CreatedAt)
+		err = rows.Scan(&scholarship.Id, &scholarship.Name, &scholarship.Jenjang, &scholarship.Kota, &scholarship.Description, &scholarship.Image, &scholarship.CreatedAt)
 		if err != nil {
 			return nil, err
 		}

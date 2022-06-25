@@ -22,7 +22,6 @@ type UserResponse struct {
 
 type Scholarship struct {
 	Id          int    `json:"id"`
-	User_id     int    `json:"user_id"`
 	Name        string `json:"name"`
 	Jenjang     string `json:"jenjang"`
 	Kota        string `json:"kota"`
