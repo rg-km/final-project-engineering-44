@@ -3,7 +3,6 @@ import "./content.css";
 import { FiFilter } from "react-icons/fi";
 import Table from "../../components/Table/Table";
 import userStore from "../../store/userStore";
-import Dashboard from "../../pages/Dashboard/Dashboard";
 
 const Content = () => {
   const user = userStore((state) => state.user);

@@ -5,9 +5,46 @@ import userStore from "../../store/userStore";
 import { AiOutlineUser } from "react-icons/ai";
 import { BsKey } from "react-icons/bs";
 import { GoBook } from "react-icons/go";
+import { useState } from "react";
+import axios from "axios";
 
 const ProfilPage = () => {
   const user = userStore((state) => state.user);
+
+  const [data, setData] = useState({
+    email: user?.email,
+    username: user?.username,
+    password: user?.password,
+    jenjang: user?.jenjang || "Perguruan Tinggi",
+    kota: user?.kota || "Bekasi",
+  });
+
+  const handleChange = (e) => {
+    const value = e.target.value;
+    setData({ ...data, [e.target.name]: value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const user = {
+      email: data.email,
+      username: data.username,
+      password: data.password,
+      jenjang: data.jenjang,
+      kota: data.kota,
+    };
+    try {
+      const res = await axios({
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        url: "/user/",
+        withCredentials: true,
+        data: user,
+      });
+      console.log(res);
+    } catch (error) {}
+  };
+
   return (
     <div className="Profile-Page">
       <Navbar />
@@ -41,21 +78,41 @@ const ProfilPage = () => {
           <div className="box-right">
             <div className="form-group">
               <label>Username</label>
-              <input type="text" value={user?.username} />
+              <input
+                type="text"
+                value={data.username}
+                onChange={handleChange}
+                name="username"
+              />
             </div>
             <div className="form-group">
               <label>Email</label>
-              <input type="email" value={user?.email} />
+              <input
+                type="email"
+                value={data.email}
+                onChange={handleChange}
+                name="email"
+              />
             </div>
             <div className="form-group">
               <label>Jenjang</label>
-              <input type="text" value={user?.jenjang || "Perguruan Tinggi"} />
+              <input
+                type="text"
+                value={data.jenjang}
+                onChange={handleChange}
+                name="jenjang"
+              />
             </div>
             <div className="form-group">
               <label>Kota</label>
-              <input type="text" value={user?.kota || "Semarang"} />
+              <input
+                type="text"
+                value={data.kota}
+                onChange={handleChange}
+                name="kota"
+              />
             </div>
-            <button>Update</button>
+            <button onClick={handleSubmit}>Update</button>
           </div>
         </div>
       </div>

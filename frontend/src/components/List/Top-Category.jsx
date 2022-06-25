@@ -6,13 +6,13 @@ const TopCategory = () => {
     <div className="pilihan-beasiswa">
       <div>
         <p>
-          <Link to={"/beasiswa"}>Beasiswa Daerah</Link>
+          <Link to={"/scholarship/kota"}>Beasiswa Kota</Link>
         </p>
         <p>
-          <Link to={"/beasiswa"}>Beasiswa Provinsi</Link>
+          <Link to={"/scholarship/Daerah"}>Beasiswa Daerah</Link>
         </p>
         <p>
-          <Link to={"/beasiswa"}>Beasiswa Nasional</Link>
+          <Link to={"/scholarship/nasional"}>Beasiswa Nasional</Link>
         </p>
       </div>
     </div>
