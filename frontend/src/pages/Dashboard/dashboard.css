@@ -2,11 +2,11 @@
     display: flex;
 }
 
-.dashboard .content {
+/* .dashboard .content {
     flex: 4;
-}
+} */
 
-.dashboard .top {
+/* .dashboard .top {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -57,4 +57,4 @@
     padding: 30px;
     display: flex;
     flex-direction: column;
-}
+} */

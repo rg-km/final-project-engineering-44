@@ -14,6 +14,7 @@ import Missing from "./pages/Missing/Missing";
 import Single from "./pages/Single/Single";
 import AuthRoute from "./screens/AuthRoute";
 import PrivateRoute from "./screens/PrivateRoute";
+import Scholarship from "./pages/Scholarship/Scholarship";
 
 function App() {
   // const { kota } = useParams();
@@ -42,6 +43,7 @@ function App() {
       </Route>
       <Route path="admin" element={<ProtectedRoute />}>
         <Route path="dashboard" element={<Dashboard />} />
+        <Route path="scholarship" element={<Scholarship />} />
       </Route>
       <Route path="*" element={<Missing />} />
     </Routes>

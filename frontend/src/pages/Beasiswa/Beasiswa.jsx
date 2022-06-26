@@ -4,7 +4,7 @@ import beasiswaPPG from "../../assets/beasiswa-PPG.jpeg";
 import Navbar from "../../components/Navbar/Navbar";
 import scholarStore from "../../store/scholarStore";
 import Moment from "moment";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 const Beasiswa = () => {
   const beasiswa = scholarStore((state) => state.beasiswa);
@@ -29,7 +29,9 @@ const Beasiswa = () => {
                   <p>{format}</p>
                 </div>
                 <p>{data.description}</p>
-                <button>Daftar</button>
+                <Link to={`/scholarship/single/${data.id}`}>
+                  <button>Daftar</button>
+                </Link>
               </div>
             </div>
           );
