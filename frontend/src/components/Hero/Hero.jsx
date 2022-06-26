@@ -4,7 +4,7 @@ import ImageLandingPage from "../../assets/logoLanding.png";
 import { BsSearch } from "react-icons/bs";
 import { BsPerson } from "react-icons/bs";
 
-const Hero = () => {
+const Hero = ({ setSearch }) => {
   return (
     <div className="hero">
       <div className="left">
@@ -16,7 +16,11 @@ const Hero = () => {
           <span>Temukan 1001 Beasiswa dalam satu ruang pintar </span>
         </div>
         <div className="search-hero">
-          <input type="text" placeholder="Search..." />
+          <input
+            type="text"
+            placeholder="Search..."
+            onChange={(e) => setSearch(e.target.value)}
+          />
           <button>
             <BsSearch />
           </button>

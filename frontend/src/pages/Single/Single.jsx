@@ -6,6 +6,7 @@ import Navbar from "../../components/Navbar/Navbar";
 import BeasiswaImage from "../../assets/beasiswa-PPG.jpeg";
 import { GoLocation } from "react-icons/go";
 import { IoSchoolOutline } from "react-icons/io5";
+
 const Single = () => {
   const { id } = useParams();
   const beasiswa = scholarStore((state) => state.beasiswa);
@@ -17,7 +18,7 @@ const Single = () => {
       <Navbar />
       <div className="content">
         <div className="image">
-          <img src={BeasiswaImage} alt="" />
+          <img src={data?.image ? data?.image : BeasiswaImage} alt="" />
         </div>
         <div className="text">
           <h1>{data.name}</h1>

@@ -1,103 +1,58 @@
 .wrapper-beasiswa {
-    display: flex;
-    flex-direction: column;
-    margin-left: 40px;
+    width: 100%;
 }
 
-.footer-bea {
-    display: flex;
-    flex-direction: row;
-    gap: 700px;
-    color: #1F4690;
-}
-
-.logo-bea {
-    display: flex;
-    flex-direction: column;
-
-}
-
-.logo-bea img {
-    width: 25px;
-}
-
-.logo-bea p {
-    font-size: 18px;
-    margin-top: -15px;
-}
-
-.user-bea {
-    display: flex;
-    flex-direction: row;
-    align-items:center;
-    justify-content: right;
-    gap: 20px;
-}
-
-.user-bea img {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    margin-right: 15px;
-}
-
-.user-bea button {
-    border: none;
-    border-radius: 8px;
-    padding: 8px;
-    color: white;
-    background-color: #1f4690;
-    cursor: pointer;
-    font-weight: bold;
+.wrapper-bea h1 {
+    text-align: center;
 }
 
 .wrapper-bea {
     display: flex;
     flex-direction: column;
-    gap: 25px;
+    gap: 80px;
 }
 
 .konten-bea {
     display: flex;
-    flex-direction: row;
-    gap: 30px;
-    margin-right: 250px;
+    width: 80%;
+    margin: 0 auto;
 }
 
 .konten-bea img {
-    width: 250px;
-    border: none;
-    border-radius: 8px;
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
 }
 
-.desc-bea {
-    display: flex;
-    flex-direction: column;
+.konten-bea .desc-bea {
+    margin-left: 20px;
 }
 
-.desc-bea p {
-    text-align: justify;
-    margin-top: -10px;
+.konten-bea .judul-bea h3 {
+    margin: 0;
+    font-size: 1.2em;
 }
 
-.judul-bea {
-    display: flex;
-    flex-direction: row;
-    gap: 100px;
-    align-items: center;
-    justify-content: space-between;
+.konten-bea .desc-bea .desc {
+    width: 800px;
+    overflow: hidden;
+    line-height: 2rem;
+    max-height: 8rem;
+    -webkit-box-orient: vertical;
+    display: block;
+    display: -webkit-box;
+    overflow: hidden !important;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 4;
 }
 
-.desc-bea button {
-    border: none;
-    border-radius: 8px;
-    padding: 8px;
+.konten-bea button {
+    background-color: var(--primary-color);
     color: white;
-    background-color: #1f4690;
+    border: none;
     cursor: pointer;
-    font-weight: bold;
     width: 100px;
+    height: 30px;
+    border-radius: 10px;
+    font-weight: bold;
 }
-
-
-

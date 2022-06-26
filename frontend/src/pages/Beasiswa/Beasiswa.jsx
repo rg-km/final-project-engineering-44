@@ -1,6 +1,5 @@
 import React from "react";
 import "./beasiswa.css";
-import beasiswaPPG from "../../assets/beasiswa-PPG.jpeg";
 import Navbar from "../../components/Navbar/Navbar";
 import scholarStore from "../../store/scholarStore";
 import Moment from "moment";
@@ -22,13 +21,13 @@ const Beasiswa = () => {
           const format = Moment(date).format("DD-MM-YYYY");
           return (
             <div className="konten-bea" key={index}>
-              <img src={beasiswaPPG} alt="" />
+              <img src={data.image} alt="" />
               <div className="desc-bea">
                 <div className="judul-bea">
                   <h3>{data.name}</h3>
                   <p>{format}</p>
                 </div>
-                <p>{data.description}</p>
+                <p className="desc">{data.description}</p>
                 <Link to={`/scholarship/single/${data.id}`}>
                   <button>Daftar</button>
                 </Link>

@@ -11,16 +11,33 @@ import ListBeasiswa from "../../components/List/List-Beasiswa";
 import News from "../../components/News/News";
 import Navbar from "../../components/Navbar/Navbar";
 import Hero from "../../components/Hero/Hero";
+import useFetch from "../../hooks/useFetch";
+import scholarStore from "../../store/scholarStore";
+import { useEffect, useState } from "react";
 
 const LandingPage = () => {
+  const setBeasiswa = scholarStore((state) => state.setBeasiswa);
+  const { data, error, loading } = useFetch("/scholarships");
+  const [search, setSearch] = useState("");
+
+  useEffect(() => {
+    setBeasiswa(data);
+  }, [data]);
+
   return (
     <div className="landing">
       <Navbar />
-      <Hero />
+      <Hero setSearch={setSearch} />
       <div className="list-konten">
         <div>
           <h1>List Beasiswa</h1>
-          <ListBeasiswa />
+          {error ? (
+            error
+          ) : loading ? (
+            "Loading please wait..."
+          ) : (
+            <ListBeasiswa />
+          )}
         </div>
         <div>
           <h1>Top News</h1>
