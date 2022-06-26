@@ -62,11 +62,12 @@ func (api *API) login(c *gin.Context) {
 	expirationTime := time.Now().Add(24 * time.Hour)
 
 	claims := &Claims{
-		Id: data.Id,
+		Id:       data.Id,
 		Email:    data.Email,
 		Username: data.Username,
 		Jenjang:  data.Jenjang,
 		Kota:     data.Kota,
+		Image:    data.Image,
 		Role:     data.Role,
 		StandardClaims: jwt.StandardClaims{
 			ExpiresAt: expirationTime.Unix(),
