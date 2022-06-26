@@ -17,8 +17,8 @@ const ProfilPage = () => {
     email: user?.email,
     username: user?.username,
     password: user?.password,
-    jenjang: user?.jenjang || "Perguruan Tinggi",
-    kota: user?.kota || "Bekasi",
+    jenjang: user?.jenjang,
+    kota: user?.kota,
   });
 
   const handleChange = (e) => {
@@ -37,7 +37,7 @@ const ProfilPage = () => {
     };
     try {
       const res = await axios({
-        method: "POST",
+        method: "PUT",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         url: `/user/${id}`,
         withCredentials: true,

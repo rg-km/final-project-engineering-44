@@ -32,7 +32,7 @@ const Navbar = () => {
         {user.username ? (
           <>
             <Link
-              to={`/user/${user?.exp}`}
+              to={`/user/${user?.id}`}
               style={{ textDecoration: "none", color: "inherit" }}>
               <span>Hi, {user.username}</span>
             </Link>

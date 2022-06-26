@@ -43,6 +43,6 @@ const Beasiswa = () => {
 
 export default Beasiswa;
 
-export const Daerah = () => {};
-export const Provinsi = () => {};
-export const Nasional = () => {};
+// export const Daerah = () => {};
+// export const Provinsi = () => {};
+// export const Nasional = () => {};

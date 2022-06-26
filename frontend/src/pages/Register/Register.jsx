@@ -8,7 +8,6 @@ import axios from "axios";
 
 const Register = () => {
   const navigate = useNavigate();
-  const initialRef = useRef();
 
   const [message, setMessage] = useState("");
   const [data, setData] = useState({
@@ -34,7 +33,7 @@ const Register = () => {
       email: data.email,
       password: data.password,
       jenjang: data.jenjang,
-      domisili: data.domisili,
+      kota: data.kota,
     };
     await axios({
       method: "post",
@@ -54,8 +53,6 @@ const Register = () => {
       .catch((e) => {
         setMessage(e.response.data.message);
       });
-
-    initialRef.current.value = "";
   };
 
   return (

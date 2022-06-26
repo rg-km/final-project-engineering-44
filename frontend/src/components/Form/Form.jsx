@@ -114,10 +114,10 @@ const RegisterForm = ({
         <div className="form-group">
           <input
             type="text"
-            placeholder="Domisili"
-            name="domisili"
+            placeholder="Kota"
+            name="kota"
             onChange={handleChange}
-            value={data.domisili}
+            value={data.kota}
             required
           />
           <AiOutlineUser className="icon" />

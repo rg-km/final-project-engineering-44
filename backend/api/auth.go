@@ -62,6 +62,7 @@ func (api *API) login(c *gin.Context) {
 	expirationTime := time.Now().Add(24 * time.Hour)
 
 	claims := &Claims{
+		Id: data.Id,
 		Email:    data.Email,
 		Username: data.Username,
 		Jenjang:  data.Jenjang,
