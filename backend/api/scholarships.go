@@ -155,6 +155,28 @@ func (a *API) getScholarshipsByName(c *gin.Context) {
 	})
 }
 
+// menampilkan beasiswa berdasarkan kategori
+func (a *API) getScholarshipsByKategori(c *gin.Context) {
+	kategori := c.Param("kategori")
+	beasiswa, err := a.scholarshipRepo.GetByKategori(kategori)
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{
+			"message": err.Error(),
+		})
+		return
+	}
+	if len(beasiswa) == 0 {
+		c.JSON(http.StatusNotFound, gin.H{
+			"message": "beasiswa not found",
+		})
+		return
+	}
+	c.JSON(http.StatusOK, gin.H{
+		"message": "Beasiswa ditemukan",
+		"data":    beasiswa,
+	})
+}
+
 // menghapus konten biasiswa
 func (a *API) DeleteScholarships(c *gin.Context) {
 	id := c.Param("id")

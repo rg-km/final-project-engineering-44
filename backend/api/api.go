@@ -25,12 +25,6 @@ func NewAPI(userRepo repo.UserRepository, scholarshipRepo repo.ScholarshipsRepos
 		gin:             gin,
 	}
 
-	// gin.POST("/login/siswa", api.LoginSiswa)
-
-	// user := gin.Group("/user")
-	// {
-	// 	user.POST("/login", api.LoginUser)
-	// }
 	gin.POST("/api/login", api.login)
 	gin.POST("/api/register", api.Register)
 	gin.POST("/api/logout", api.Logout)
@@ -43,6 +37,7 @@ func NewAPI(userRepo repo.UserRepository, scholarshipRepo repo.ScholarshipsRepos
 	gin.GET("/api/scholarships/jenjang/:jenjang", api.getScholarshipsByJenjang)
 	gin.GET("/api/scholarships/name/:name", api.getScholarshipsByName)
 	gin.GET("/api/scholarships/kota/:kota", api.getScholarshipsByKota)
+	gin.GET("/api/scholarships/kategori/:kategori", api.getScholarshipsByKategori)
 	gin.POST("/api/scholarships/upload", api.uploadScholarships)
 	gin.PUT("/api/scholarships/:id", api.Updatebeasiswa)
 	gin.DELETE("/api/scholarships/:id", api.DeleteScholarships)

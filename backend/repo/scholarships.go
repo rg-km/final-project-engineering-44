@@ -111,6 +111,25 @@ func (s *ScholarshipsRepository) GetByName(name string) ([]Scholarship, error) {
 	return scholarships, nil
 }
 
+func (s *ScholarshipsRepository) GetByKategori(kategori string) ([]Scholarship, error) {
+	sqlStatement := `SELECT * FROM scholarship WHERE kategori = ?;`
+
+	rows, err := s.db.Query(sqlStatement, kategori)
+	if err != nil {
+		return nil, err
+	}
+	var scholarships []Scholarship
+	for rows.Next() {
+		var scholarship Scholarship
+		err = rows.Scan(&scholarship.Id, &scholarship.Name, &scholarship.Jenjang, &scholarship.Kota, &scholarship.Description, &scholarship.Kategori, &scholarship.Image, &scholarship.CreatedAt)
+		if err != nil {
+			return nil, err
+		}
+		scholarships = append(scholarships, scholarship)
+	}
+	return scholarships, nil
+}
+
 func (s *ScholarshipsRepository) Delete(id int) (Scholarship, error) {
 	res, err := s.GetById(id)
 	if err != nil {
@@ -126,7 +145,7 @@ func (s *ScholarshipsRepository) Delete(id int) (Scholarship, error) {
 }
 
 func (s *ScholarshipsRepository) Update(id int, beasiswa Scholarship) (Scholarship, error) {
-	sqlStatement := `UPDATE scholarship SET name = ?, description = ?, jenjang = ?, kota = ?, image = ? WHERE id = ?;`
+	sqlStatement := `UPDATE scholarship SET name = ?, description = ?, jenjang = ?, kota = ?, kategori = ?, image = ? WHERE id = ?;`
 
 	_, err := s.db.Exec(sqlStatement, beasiswa.Name, beasiswa.Description, beasiswa.Jenjang, beasiswa.Kota, beasiswa.Kategori, beasiswa.Image, id)
 	if err != nil {
