@@ -13,7 +13,7 @@ func NewScholarshipsRepository(db *sql.DB) *ScholarshipsRepository {
 }
 
 func (s *ScholarshipsRepository) Upload(beasiswa Scholarship) (Scholarship, error) {
-	sqlStatement := `INSERT INTO scholarship (name, jenjang, kota, description, image) VALUES (?, ?, ?, ?, ?);`
+	sqlStatement := `INSERT INTO scholarship (name, jenjang, kota, description, image, kategori) VALUES (?, ?, ?, ?, ?);`
 
 	_, err := s.db.Exec(sqlStatement, beasiswa.Name, beasiswa.Jenjang, beasiswa.Kota, beasiswa.Description, beasiswa.Image)
 	if err != nil {

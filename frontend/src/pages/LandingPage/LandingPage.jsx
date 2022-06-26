@@ -11,8 +11,17 @@ import ListBeasiswa from "../../components/List/List-Beasiswa";
 import News from "../../components/News/News";
 import Navbar from "../../components/Navbar/Navbar";
 import Hero from "../../components/Hero/Hero";
+import scholarStore from "../../store/scholarStore";
+import { useEffect } from "react";
+import useFetch from "../../hooks/useFetch";
 
 const LandingPage = () => {
+  const setBeasiswa = scholarStore((state) => state.setBeasiswa);
+  const { data } = useFetch("/scholarships");
+  useEffect(() => {
+    setBeasiswa(data);
+  }, [data]);
+
   return (
     <div className="landing">
       <Navbar />

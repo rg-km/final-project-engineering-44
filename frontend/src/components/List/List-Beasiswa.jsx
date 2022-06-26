@@ -10,54 +10,14 @@ import axios from "axios";
 import { useEffect } from "react";
 
 const ListBeasiswa = () => {
-  const datas = [
-    {
-      id: 1,
-      image: BeasiswaPPG,
-      name: "Beasiswa PPG",
-    },
-    {
-      id: 2,
-      image: BeasiswaBI,
-      name: "Beasiswa BI",
-    },
-    {
-      id: 3,
-      image: BeasiswaKaltim,
-      name: "Beasiswa Kaltim",
-    },
-    {
-      id: 4,
-      image: BeasiswaKarawang,
-      name: "Beasiswa Karawang",
-    },
-    {
-      id: 5,
-      image: BeasiswaKarawang,
-      name: "Beasiswa Karawang",
-    },
-  ];
-  const { setBeasiswa } = scholarStore((state) => state.setBeasiswa);
-
-  const fetchData = async () => {
-    try {
-      const res = await axios({
-        method: "get",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        url: "/scholarships",
-        withCredentials: true,
-      });
-      console.log(res);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  const beasiswa = scholarStore((state) => state.beasiswa);
+  console.log(beasiswa);
 
   return (
     <div className="list-beasiswa">
       <Swiper slidesPerView={4} spaceBetween={50}>
-        {datas.map((data) => (
-          <SwiperSlide key={data.id}>
+        {beasiswa.map((data, index) => (
+          <SwiperSlide key={index}>
             <div className="beasiswa">
               <div className="image">
                 <img src={data.image} alt={data.name} />
