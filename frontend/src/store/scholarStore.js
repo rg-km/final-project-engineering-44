@@ -8,6 +8,10 @@ const scholarStore = create(
       setBeasiswa: (data) => {
         set({ beasiswa: data });
       },
+      removeBeasiswa: (id) =>
+        set((state) => ({
+          beasiswa: state.beasiswa.filter((data) => data.id !== id),
+        })),
     }),
     {
       name: "beasiswa-data",

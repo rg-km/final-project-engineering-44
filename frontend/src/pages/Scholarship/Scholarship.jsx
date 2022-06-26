@@ -91,19 +91,46 @@ const Scholarship = () => {
                 </div>
                 <div className="input-group">
                   <label htmlFor="jenjang">Jenjang</label>
-                  <input id="jenjang" type="text" name="jenjnag" />
+                  <input
+                    id="jenjang"
+                    type="text"
+                    name="jenjang"
+                    onChange={handleChange}
+                  />
                 </div>
                 <div className="input-group">
                   <label htmlFor="kota">Kota</label>
-                  <input id="kota" type="text" name="kota" />
+                  <input
+                    id="kota"
+                    type="text"
+                    name="kota"
+                    onChange={handleChange}
+                  />
+                </div>
+                <div className="input-group">
+                  <label htmlFor="kategori">Kategori</label>
+                  <input
+                    id="kategori"
+                    type="text"
+                    name="kategori"
+                    onChange={handleChange}
+                  />
                 </div>
                 <div className="input-group">
                   <label htmlFor="desc">Description</label>
-                  <textarea name="description" id="desc"></textarea>
+                  <textarea
+                    name="description"
+                    id="desc"
+                    onChange={handleChange}></textarea>
                 </div>
                 <div className="input-group">
                   <label htmlFor="image">Image</label>
-                  <input id="image" type="file" name="image" />
+                  <input
+                    id="image"
+                    type="text"
+                    name="image"
+                    onChange={handleChange}
+                  />
                 </div>
                 <button onClick={handleSubmit} className="add-btn">
                   Submit

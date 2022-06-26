@@ -3,7 +3,7 @@ import useAuth from "../hooks/useAuth";
 
 const ProtectedRoute = () => {
   const user = useAuth();
-  const isAllow = user.role === "user";
+  const isAllow = user.role === "admin";
 
   return isAllow ? <Outlet /> : <Navigate to="/" />;
 };

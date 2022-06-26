@@ -5,6 +5,7 @@ import { BiEditAlt } from "react-icons/bi";
 import useFetch from "../../hooks/useFetch";
 import scholarStore from "../../store/scholarStore";
 import Moment from "moment";
+import axios from "axios";
 
 const Table = () => {
   const setBeasiswa = scholarStore((state) => state.setBeasiswa);
@@ -15,6 +16,32 @@ const Table = () => {
   }, [data]);
 
   const beasiswa = scholarStore((state) => state.beasiswa);
+  const removeBeasiswa = scholarStore((state) => state.removeBeasiswa);
+
+  const handleDelete = async (id) => {
+    try {
+      const res = await axios({
+        method: "DELETE",
+        url: `/scholarships/${id}`,
+      });
+      removeBeasiswa(id);
+      console.log(res);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleUpdate = async (id) => {
+    try {
+      const res = await axios({
+        method: "PUT",
+        url: `/scholarships/${id}`,
+      });
+      console.log(res);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <table>
@@ -42,7 +69,7 @@ const Table = () => {
                 <td>{format}</td>
                 <td>
                   <div className="action">
-                    <button>
+                    <button onClick={() => handleDelete(data.id)}>
                       <ImBin />
                     </button>
                     <button>
