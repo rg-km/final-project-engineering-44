@@ -10,7 +10,7 @@ const ListBeasiswa = () => {
   return (
     <div className="list-beasiswa">
       <Swiper slidesPerView={4} spaceBetween={50}>
-        {beasiswa.map((data, index) => (
+        {beasiswa?.map((data, index) => (
           <SwiperSlide key={index}>
             <div className="beasiswa">
               <div className="image">

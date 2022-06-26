@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./navbar.css";
 import Logo from "../../assets/logo.png";
 import { Link, useNavigate } from "react-router-dom";
@@ -9,6 +9,7 @@ import useAuth from "../../hooks/useAuth";
 const Navbar = () => {
   const navigate = useNavigate();
   const removeUser = userStore((state) => state.removeUser);
+  const setUser = userStore((state) => state.setUser);
   const user = useAuth();
 
   const handleClick = async () => {
@@ -20,6 +21,10 @@ const Navbar = () => {
       });
     }
   };
+
+  useEffect(() => {
+    setUser();
+  }, []);
   return (
     <div className="navbar">
       <Link to="/" className="link">

@@ -56,7 +56,7 @@ const Table = () => {
       {error && error}
       {loading
         ? "Loading"
-        : beasiswa.map((data, index) => {
+        : beasiswa?.map((data, index) => {
             Moment.locale("id");
             const date = data.created_at;
             const format = Moment(date).format("DD-MM-YYYY");

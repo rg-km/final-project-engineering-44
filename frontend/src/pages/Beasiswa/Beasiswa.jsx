@@ -15,10 +15,11 @@ const Beasiswa = () => {
       <Navbar />
       <div className="wrapper-bea">
         <h1>Beasiswa {kota}</h1>
-        {beasiswa.map((data, index) => {
+        {beasiswa?.map((data, index) => {
           Moment.locale("id");
           const date = data.created_at;
           const format = Moment(date).format("DD-MM-YYYY");
+          console.log(beasiswa);
           return (
             <div className="konten-bea" key={index}>
               <img src={data.image} alt="" />

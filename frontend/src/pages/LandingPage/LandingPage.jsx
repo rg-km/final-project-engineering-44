@@ -17,8 +17,7 @@ import { useEffect, useState } from "react";
 
 const LandingPage = () => {
   const setBeasiswa = scholarStore((state) => state.setBeasiswa);
-  const { data, error, loading } = useFetch("/scholarships");
-  const [search, setSearch] = useState("");
+  const { data } = useFetch("/scholarships");
 
   useEffect(() => {
     setBeasiswa(data);
