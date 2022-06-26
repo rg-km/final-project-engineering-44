@@ -28,7 +28,7 @@ type Scholarship struct {
 	Jenjang     string `json:"jenjang"`
 	Kota        string `json:"kota"`
 	Description string `json:"description"`
-	Image       string `json:"image"`
 	Kategori    string `json:"kategori"`
+	Image       string `json:"image"`
 	CreatedAt   string `json:"created_at"`
 }

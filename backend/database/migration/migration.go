@@ -42,8 +42,8 @@ func CreateTableDatabse(db *sql.DB) (string, error) {
 		Jenjang VARCHAR NOT NULL,
 		Kota VARCHAR NOT NULL,
 		Description TEXT NOT NULL,
-		Image VARCHAR NOT NULL,
 		Kategori VARCHAR NOT NULL,
+		Image VARCHAR NOT NULL,
 		Created_at DATETIME DEFAULT CURRENT_TIMESTAMP
 		);
 	
