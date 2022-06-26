@@ -53,12 +53,20 @@ const ProfilPage = () => {
       <div className="profile">
         <div className="left">
           <div className="box">
-            <h1>
-              Nama : <strong>{user?.username}</strong>
-            </h1>
-            <div className="info">
-              <p>{user?.jenjang}</p>
-              <p>{user?.kota}</p>
+            <div className="image">
+              <img
+                src="https://res.cloudinary.com/wikitro/image/upload/v1656228746/ruang-beasiswa/download_iztpk3.png"
+                alt={user?.username}
+              />
+            </div>
+            <div className="text">
+              <h1>
+                Nama : <strong>{user?.username}</strong>
+              </h1>
+              <div className="info">
+                <p>{user?.jenjang}</p>
+                <p>{user?.kota}</p>
+              </div>
             </div>
           </div>
           <div className="box">

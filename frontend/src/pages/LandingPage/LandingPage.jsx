@@ -27,17 +27,11 @@ const LandingPage = () => {
   return (
     <div className="landing">
       <Navbar />
-      <Hero setSearch={setSearch} />
+      <Hero />
       <div className="list-konten">
         <div>
           <h1>List Beasiswa</h1>
-          {error ? (
-            error
-          ) : loading ? (
-            "Loading please wait..."
-          ) : (
-            <ListBeasiswa />
-          )}
+          <ListBeasiswa />
         </div>
         <div>
           <h1>Top News</h1>
