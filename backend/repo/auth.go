@@ -17,9 +17,9 @@ func NewUserRepository(db *sql.DB) *UserRepository {
 
 func (s *UserRepository) Register(user User) (User, error) {
 	password, _ := bcrypt.GenerateFromPassword([]byte(user.Password), 10)
-	sqlStatement := `INSERT INTO user (username, password, email, jenjang, kota, role) VALUES (?, ?, ?, ?, ?, ?);`
+	sqlStatement := `INSERT INTO user (username, password, email, jenjang, kota, image, role) VALUES (?, ?, ?, ?, ?, ?);`
 
-	_, err := s.db.Exec(sqlStatement, user.Username, string(password), user.Email, user.Jenjang, user.Kota, "user")
+	_, err := s.db.Exec(sqlStatement, user.Username, string(password), user.Email, user.Jenjang, user.Kota, "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBw8NDQgKCw0NCAgHDQ0QBwgNCA8IDQ0NFREWFhURFRMkHSggGBolHRUTITEiJSkrNS4uFyszODMsNygtLisBCgoKDQ0NDg0NDisZFRkrKysrKysrKysrKysrKy0rKysrKys3KysrKysrKysrKysrKysrKysrKysrKysrKysrK//AABEIAOEA4QMBIgACEQEDEQH/xAAbAAEAAwEBAQEAAAAAAAAAAAAAAQUGBAMCB//EADMQAQACAQEGAwQJBQAAAAAAAAABAgMRBAUSIWGRMUFRI3GBwRMiMjNDUmJyoUJTsdHx/8QAFgEBAQEAAAAAAAAAAAAAAAAAAAEC/8QAFhEBAQEAAAAAAAAAAAAAAAAAABEB/9oADAMBAAIRAxEAPwD9aAVAAAAAAAAAAAAAAAAAAAAAAAAAABKAAAAAAAAAAAAAAAAAAAAAA", "user")
 	if err != nil {
 		return User{}, err
 
@@ -37,7 +37,7 @@ func (u *UserRepository) CheckUser(email string) (*UserResponse, error) {
 
 	var user UserResponse
 	for rows.Next() {
-		err = rows.Scan(&user.Id, &user.Username, &user.Email, &user.Password, &user.Jenjang, &user.Kota, &user.Role)
+		err = rows.Scan(&user.Id, &user.Username, &user.Email, &user.Password, &user.Jenjang, &user.Kota, &user.Image, &user.Role)
 		if err != nil {
 			return nil, err
 		}
@@ -58,7 +58,7 @@ func (u *UserRepository) CheckUserRegis(value string) (*User, error) {
 
 	var user User
 	for rows.Next() {
-		err = rows.Scan(&user.Id, &user.Username, &user.Password, &user.Email, &user.Jenjang, &user.Kota, &user.Role)
+		err = rows.Scan(&user.Id, &user.Username, &user.Email, &user.Password, &user.Jenjang, &user.Kota, &user.Image, &user.Role)
 		if err != nil {
 			return nil, err
 		}
@@ -79,7 +79,7 @@ func (u *UserRepository) GetAll() ([]User, error) {
 	var users []User
 	for rows.Next() {
 		var user User
-		err = rows.Scan(&user.Id, &user.Username, &user.Email, &user.Password, &user.Jenjang, &user.Kota, &user.Role)
+		err = rows.Scan(&user.Id, &user.Username, &user.Email, &user.Password, &user.Jenjang, &user.Kota, &user.Image, &user.Role)
 		if err != nil {
 			return nil, err
 		}
@@ -99,7 +99,7 @@ func (u *UserRepository) GetById(id int) (User, error) {
 
 	var user User
 	for rows.Next() {
-		err = rows.Scan(&user.Id, &user.Username, &user.Email, &user.Password, &user.Jenjang, &user.Kota, &user.Role)
+		err = rows.Scan(&user.Id, &user.Username, &user.Email, &user.Password, &user.Jenjang, &user.Kota, &user.Image, &user.Role)
 		if err != nil {
 			return User{}, err
 		}
@@ -118,7 +118,7 @@ func (u *UserRepository) GetByName(username string) (User, error) {
 
 	var user User
 	for rows.Next() {
-		err = rows.Scan(&user.Id, &user.Username, &user.Email, &user.Password, &user.Jenjang, &user.Kota, &user.Role)
+		err = rows.Scan(&user.Id, &user.Username, &user.Email, &user.Password, &user.Jenjang, &user.Kota, &user.Image, &user.Role)
 		if err != nil {
 			return User{}, err
 		}
@@ -129,9 +129,9 @@ func (u *UserRepository) GetByName(username string) (User, error) {
 
 func (u *UserRepository) Update(id int, baru User) (User, error) {
 	password, _ := bcrypt.GenerateFromPassword([]byte(baru.Password), 10)
-	sqlStatement := `UPDATE user SET username = ?, email = ?, password = ?, jenjang = ?, kota = ? WHERE id = ?;`
+	sqlStatement := `UPDATE user SET username = ?, email = ?, password = ?, jenjang = ?, kota = ?, image= ?, WHERE id = ?;`
 
-	_, err := u.db.Exec(sqlStatement, baru.Username, baru.Email, string(password), baru.Jenjang, baru.Kota, id)
+	_, err := u.db.Exec(sqlStatement, baru.Username, baru.Email, string(password), baru.Jenjang, baru.Kota, baru.Image, id)
 	if err != nil {
 		return User{}, err
 	}

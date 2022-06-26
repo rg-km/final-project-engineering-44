@@ -32,8 +32,11 @@ func CreateTableDatabse(db *sql.DB) (string, error) {
 		Password varchar(255) NOT NULL,
 		Jenjang varchar (255) NOT NULL,
 		Kota varchar (255) NOT NULL,
+		Image VARCHAR DEFAULT 'image.jpg',
 		Role varchar(255) NOT NULL
 		);
+	
+	INSERT INTO user (Username, Email, Password, Jenjang, Kota, Image, Role) VALUES ('admin', 'admin@gmail.com', 'admin', 'Perusahan', 'Jakarta', 'data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBw8NDQgKCw0NCAgHDQ0QBwgNCA8IDQ0NFREWFhURFRMkHSggGBolHRUTITEiJSkrNS4uFyszODMsNygtLisBCgoKDQ0NDg0NDisZFRkrKysrKysrKysrKysrKy0rKysrKys3KysrKysrKysrKysrKysrKysrKysrKysrKysrK//AABEIAOEA4QMBIgACEQEDEQH/xAAbAAEAAwEBAQEAAAAAAAAAAAAAAQUGBAMCB//EADMQAQACAQEGAwQJBQAAAAAAAAABAgMRBAUSIWGRMUFRI3GBwRMiMjNDUmJyoUJTsdHx/8QAFgEBAQEAAAAAAAAAAAAAAAAAAAEC/8QAFhEBAQEAAAAAAAAAAAAAAAAAABEB/9oADAMBAAIRAxEAPwD9aAVAAAAAAAAAAAAAAAAAAAAAAAAAABKAAAAAAAAAAAAAAAAAAAAAA', 'admin');
 
 	CREATE TABLE IF NOT EXISTS scholarship (
 		Id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -41,11 +44,10 @@ func CreateTableDatabse(db *sql.DB) (string, error) {
 		Jenjang VARCHAR NOT NULL,
 		Kota VARCHAR NOT NULL,
 		Description TEXT NOT NULL,
-		Image VARCHAR DEFAULT 'image.jpg',
+		Image VARCHAR NOT NULL,
+		Kategori VARCHAR NOT NULL,
 		Created_at DATETIME DEFAULT CURRENT_TIMESTAMP
 		);
-	INSERT INTO scholarship (Name, Jenjang, Kota, Description, Image) VALUES ('SMPN 1', 'SMP', 'Jakarta', 'SMPN 1 adalah sekolah menengah pertama di Jakarta', 'image.jpg'),
-	('SMAN 1', 'SMA', 'Jakarta', 'SMPN 1 adalah sekolah menengah pertama di Jakarta', 'image.jpg');
 	
 	CREATE TABLE IF NOT EXISTS comments (
 		Id INTEGER PRIMARY KEY AUTOINCREMENT,

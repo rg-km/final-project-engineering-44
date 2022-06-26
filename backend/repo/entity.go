@@ -7,6 +7,7 @@ type User struct {
 	Password string `json:"password"`
 	Jenjang  string `json:"jenjang"`
 	Kota     string `json:"kota"`
+	Image    string `json:"image"`
 	Role     string `json:"role"`
 }
 
@@ -17,6 +18,7 @@ type UserResponse struct {
 	Password string `json:"-"`
 	Jenjang  string `json:"jenjang"`
 	Kota     string `json:"kota"`
+	Image    string `json:"image"`
 	Role     string `json:"role"`
 }
 
@@ -27,5 +29,6 @@ type Scholarship struct {
 	Kota        string `json:"kota"`
 	Description string `json:"description"`
 	Image       string `json:"image"`
+	Kategori    string `json:"kategori"`
 	CreatedAt   string `json:"created_at"`
 }
