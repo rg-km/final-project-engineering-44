@@ -21,20 +21,20 @@ const Single = () => {
           <img src={data?.image ? data?.image : BeasiswaImage} alt="" />
         </div>
         <div className="text">
-          <h1>{data.name}</h1>
-          <p>{data.description}</p>
+          <h1>{data?.name}</h1>
+          <p>{data?.description}</p>
         </div>
         <div className="bottom">
           <div className="location">
             <GoLocation className="icon" />
             <p>
-              <b>{data.kota}</b>
+              <b>{data?.kota}</b>
             </p>
           </div>
           <div className="jenjang">
             <IoSchoolOutline className="icon" />
             <p>
-              <b>{data.jenjang}</b>
+              <b>{data?.jenjang}</b>
             </p>
           </div>
         </div>

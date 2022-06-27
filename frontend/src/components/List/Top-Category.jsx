@@ -9,7 +9,7 @@ const TopCategory = () => {
           <Link to={"/scholarship/kota"}>Beasiswa Kota</Link>
         </p>
         <p>
-          <Link to={"/scholarship/Daerah"}>Beasiswa Daerah</Link>
+          <Link to={"/scholarship/daerah"}>Beasiswa Daerah</Link>
         </p>
         <p>
           <Link to={"/scholarship/nasional"}>Beasiswa Nasional</Link>

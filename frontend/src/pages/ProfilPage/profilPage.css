@@ -90,7 +90,7 @@ li {
 
 .profile .left .box:nth-last-child(1) {
     width: 350px;
-    height: 200px;
+    height: 300px;
     display: flex;
     gap: 30px;
 }

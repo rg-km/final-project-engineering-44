@@ -3,11 +3,12 @@ import Footer from "../../components/Footer/Footer";
 import Navbar from "../../components/Navbar/Navbar";
 import userStore from "../../store/userStore";
 import { AiOutlineUser } from "react-icons/ai";
+import { MdOutlineDashboard } from "react-icons/md";
 import { BsKey } from "react-icons/bs";
 import { GoBook } from "react-icons/go";
 import { useState } from "react";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 
 const ProfilPage = () => {
   const user = userStore((state) => state.user);
@@ -70,20 +71,45 @@ const ProfilPage = () => {
             </div>
           </div>
           <div className="box">
-            <ul>
-              <li>
-                <AiOutlineUser className="icon" />
-                <span>Profile</span>
-              </li>
-              <li>
-                <BsKey className="icon" />
-                <span>Change Password</span>
-              </li>
-              <li>
-                <GoBook className="icon" />
-                <span>My Scholarship</span>
-              </li>
-            </ul>
+            {user?.role === "admin" ? (
+              <ul>
+                <li>
+                  <AiOutlineUser className="icon" />
+                  <span>Profile</span>
+                </li>
+                <li>
+                  <BsKey className="icon" />
+                  <span>Change Password</span>
+                </li>
+                <li>
+                  <GoBook className="icon" />
+                  <span>My Scholarship</span>
+                </li>
+                <Link
+                  to="/admin/dashboard"
+                  style={{ textDecoration: "none", color: "inherit" }}>
+                  <li>
+                    <MdOutlineDashboard className="icon" />
+                    <span>Dashboard</span>
+                  </li>
+                </Link>
+              </ul>
+            ) : (
+              <ul>
+                <li>
+                  <AiOutlineUser className="icon" />
+                  <span>Profile</span>
+                </li>
+                <li>
+                  <BsKey className="icon" />
+                  <span>Change Password</span>
+                </li>
+                <li>
+                  <GoBook className="icon" />
+                  <span>My Scholarship</span>
+                </li>
+              </ul>
+            )}
           </div>
         </div>
         <div className="right">

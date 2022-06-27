@@ -27,9 +27,6 @@ const Content = () => {
         </div>
       </div>
       <div className="bottom">
-        <div className="button">
-          <button className="add-scholarship">Add Scholarship</button>
-        </div>
         <div className="table">
           <Table />
         </div>

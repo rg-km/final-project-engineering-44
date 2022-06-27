@@ -15,6 +15,7 @@ const Scholarship = () => {
     kota: null,
     description: null,
     image: null,
+    kategori: null,
   });
 
   const handleChange = (e) => {
@@ -33,6 +34,7 @@ const Scholarship = () => {
       kota: data.kota,
       description: data.description,
       image: data.image,
+      kategori: data.kategori,
     };
     try {
       const res = await axios({
