@@ -1,22 +1,35 @@
-import React from "react";
-import { useParams } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useLocation, useParams } from "react-router-dom";
 import "./single.css";
 import scholarStore from "../../store/scholarStore";
 import Navbar from "../../components/Navbar/Navbar";
 import BeasiswaImage from "../../assets/beasiswa-PPG.jpeg";
 import { GoLocation } from "react-icons/go";
 import { IoSchoolOutline } from "react-icons/io5";
+import axios from "axios";
 
 const Single = () => {
+  const [data, setData] = useState({});
+  const [error, setError] = useState(null);
   const { id } = useParams();
-  const beasiswa = scholarStore((state) => state.beasiswa);
 
-  const data = beasiswa[id - 1];
+  useEffect(() => {
+    const fetchSingle = async () => {
+      try {
+        const res = await axios.get(`/scholarships/id/${id}`);
+        setData(res.data.data);
+      } catch (error) {
+        setError(error);
+      }
+    };
+    fetchSingle();
+  }, [id]);
 
   return (
     <div className="single">
       <Navbar />
       <div className="content">
+        {error ? error.message : ""}
         <div className="image">
           <img src={data?.image ? data?.image : BeasiswaImage} alt="" />
         </div>

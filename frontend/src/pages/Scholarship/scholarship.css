@@ -8,6 +8,8 @@
 
 .scholarship .content {
     flex: 4;
+    overflow: scroll;
+    height: 100vh;
 }
 
 .scholarship .content .navbar {
